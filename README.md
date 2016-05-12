@@ -5,7 +5,9 @@ Wall Simulator By Anthony Ma and Daniel Wu 5/9/2016
 
 This program is a game where the player character builds and manages the building of a wall to keep an evil alien species from eating the village. The overall rules are that the player cannot directly build the wall or interact with the supplies or aliens. This game is a mix of a base defense/tower defense and a base management simulator, featuring basic computer controlled towers, guards, and workers along with an alien threat that must be stopped. The primary features for our program is an AI controlled population that performs the construction, defense, maintainence, and assault of the wall.
 
+Instructions:  
 Open the jar file after extracting, and follow on-screen instructions  
+The workers and defenders will routinely perform their tasks autonomously and all allied units and structures are upgradable for various benefits  
 
 Must Have
 -----------------------------------------------------------------------------------
@@ -42,6 +44,7 @@ Person (Represents a person)
 Worker (Represents a builder of the wall)   
 Guard (Represents a guard of the wall)     
 Player (Represents the player of the game and his/her resources)   
+Alien (Represents an alien enemy)  
 
 Responsibility List: 
 -----------------------------------------------------------------------------------
