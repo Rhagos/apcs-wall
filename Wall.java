@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Wall{
   private ArrayList<WallPiece> wall;
   public Wall()
