@@ -9,13 +9,13 @@ Open the jar file after extracting, and follow on-screen instructions
 
 Must Have
 -----------------------------------------------------------------------------------
-Menu with buttons and options that include instructions and settings
-One type of worker to maintain the wall
-One type of defense to bolster wall defenses
-One type of guard to defend the wall and man the defense structure
-One main character which denotes the player which controls an array of people
-One type of Ai which has a set playstyle when interacting with the main character
-One type of Alien enemy with a basic behavior pattern
+Menu with buttons and options that include instructions and settings  
+One type of worker to maintain the wall  
+One type of defense to bolster wall defenses  
+One type of guard to defend the wall and man the defense structure  
+One main character which denotes the player which controls an array of people  
+One type of Ai which has a set playstyle when interacting with the main character  
+One type of Alien enemy with a basic behavior pattern  
 
 Want to Have
 -----------------------------------------------------------------------------------
