@@ -1,3 +1,0 @@
-public class Wall{
-  ArrayList<WallPiece> wallFull = new ArrayList<WallPiece>();
-}
