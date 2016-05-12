@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 public class Person
 {
   private double locX;
   private double locY;
   private ArrayList<String> taskQueue;
+  private double HP;
   
   public Person(double x, double y)
   {
@@ -26,6 +28,12 @@ public class Person
     {
       
     }
+  }
+  public double getHP(){
+    return HP;
+  }
+  public void setHP(double health){
+    HP = health;
   }
   
 }
