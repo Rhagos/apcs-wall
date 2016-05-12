@@ -36,13 +36,13 @@ Interaction with out of settlement variables
 
 Classes: 
 -----------------------------------------------------------------------------------
-DrawingSurface (PApplet drawings) \n\r
-WallGame (Main runner) \n\r
-WallPiece (Represents the wall in the game) \n\r
-Person (Represents a person) \n\r
-Worker (Represents a builder of the wall) \n\r
-Guard (Represents a guard of the wall) \n\r
-Player (Represents the player of the game and his/her resources) \n\r
+DrawingSurface (PApplet drawings) 
+WallGame (Main runner) 
+WallPiece (Represents the wall in the game) 
+Person (Represents a person) 
+Worker (Represents a builder of the wall) 
+Guard (Represents a guard of the wall) 
+Player (Represents the player of the game and his/her resources) 
 
 Responsibility List: 
 -----------------------------------------------------------------------------------
