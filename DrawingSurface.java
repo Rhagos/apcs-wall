@@ -9,6 +9,7 @@ import processing.core.PApplet;
 public class DrawingSurface extends PApplet{
 	ArrayList<Person> residents;
 	ArrayList<Alien> enemies;
+	Wall wall;
 	/** 
 	 *  No Args constructor for Drawing Surface initializes the two types of different objects used in the game,
 	 *  people as denoted by residents and aliens as denoted byt enemies
@@ -16,6 +17,7 @@ public class DrawingSurface extends PApplet{
 	public DrawingSurface(){
 		residents = new ArrayList<Person>();
 		enemies = new ArrayList<Alien>();
+		wall = new Wall();
 	}
 	/**
 	 * 	Adds people objects onto the drawing surface by adding them onto the resident arrraylist
@@ -28,6 +30,9 @@ public class DrawingSurface extends PApplet{
 	 * */
 	public void addEnemy(Alien a){
 		enemies.add(a);
+	}
+	public void addPiece(WallPiece p){
+		wall.addPiece(p);
 	}
 	public void setup(){
 		
@@ -57,5 +62,6 @@ public class DrawingSurface extends PApplet{
 				y+= 100;
 			}
 		}
+		wall.draw(this);
 	}
 }
