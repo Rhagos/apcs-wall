@@ -6,6 +6,10 @@ public class Person
   private ArrayList<String> taskQueue;
   private double HP;
   private double hiringPrice;
+  private int defaultX;
+  private int defaultY;
+  private int defaultW;
+  private int defaultH;
   
   public Person(double x, double y)
   {
@@ -42,5 +46,17 @@ public class Person
   public double getPrice(){
 	  return hiringPrice;
   }
+   public void draw(PApplet drawer)
+   {
+	 drawer.stroke(0);
+
+		// float yRatio = drawer.height/500f; // float can be either cast via (float) or f behind the integer
+		// float xRatio = drawer.width/500f; // java sees 500 as an automatic int type
+		// drawer.scale(xRatio,yRatio)
+		
+		
+	 drawer.ellipse(defaultX,defaultY,defaultW,defaultH); 
+	     //drawer.popMatrix();
+	}
   
 }
