@@ -30,7 +30,7 @@ public class Alien extends Person{
 	    locY= y;
 	  }
    /**	Draws a new instance of a Alien object with the origin set at x,y 
-   * 	@param drawer the PApplet used to draw the Person
+   * 	@param drawer the PApplet used to draw the Alien
    *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
    * */
 	public void draw(PApplet drawer, float x, float y)
