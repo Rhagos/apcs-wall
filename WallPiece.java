@@ -1,5 +1,8 @@
 
+
 import java.awt.Color;
+
+import processing.core.PApplet;
 /** 
  *  This class represents a piece of the wall which forms an arraylist for the Wall class
  *   @author Daniel Wu and Anthony Ma
@@ -26,7 +29,7 @@ public class WallPiece{
   *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
   **/
   public void draw(PApplet drawer, float x, float y){
-    drawer.line(Color.RED.getRGB());
+    drawer.stroke(Color.RED.getRGB());
     drawer.fill(Color.LIGHT_GRAY.getRGB());
     drawer.rect(x,y,50,50);
   }
