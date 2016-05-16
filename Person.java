@@ -101,7 +101,7 @@ public class Person
 		// drawer.scale(xRatio,yRatio)
 		
 		
-	 drawer.ellipse(locX,locY,30,30); 
+	 drawer.ellipse((float)locX,(float)locY,(float)30,(float)30); 
 	     //drawer.popMatrix();
 	}
   
