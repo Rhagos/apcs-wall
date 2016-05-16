@@ -59,7 +59,7 @@ public class Person
 		// drawer.scale(xRatio,yRatio)
 		
 		
-	 drawer.ellipse(defaultX,defaultY,defaultW,defaultH); 
+	 drawer.ellipse(locX,locY,30,30); 
 	     //drawer.popMatrix();
 	}
   
