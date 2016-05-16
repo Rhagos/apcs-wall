@@ -18,7 +18,7 @@ public class Wall{
   {
     wall = new ArrayList<WallPiece>();
     wallX = 0;
-    wallY = 50;
+    wallY = 200;
   }
   /**
    *  Wall adds on more wallpieces 
