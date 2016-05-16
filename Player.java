@@ -1,10 +1,24 @@
 import java.util.ArrayList;
-/**
- *  This class represents the Player or the person playing the game and has controll over all Person objects as 
- *  denoted by Player consisting of an Arraylist of said Person objects
- * */
+
 public class Player
 {
-  private ArrayList<Person> hired = new ArrayList<Person>();
+	  private ArrayList<Person> hired;
+	  private double funds;
+	  
+	  public Player(){
+		  hired = new ArrayList<Person>();
+		  funds = 1000;
+	  }
+	  public void hire(Person p){
+		  hired.add(p);
+		  funds -= p.getPrice();
+		  
+	  }
+	  public void fire(Person p){
+		  if(hired.contains(p)){
+			  hired.remove(p);
+		  }
+	  }
+	  
 
 }
