@@ -1,3 +1,4 @@
+import java.awt.Color;
 import processing.core.PApplet;
 /** 
  *  This class represents a worker who is a typer Person and thus has all of Person qualities
@@ -22,7 +23,7 @@ public class Worker extends Person{
   public void draw(PApplet drawer, float x, float y)
   {
     super.draw(drawer,x,y);
-    drawer.fill(0);
+    drawer.fill(Color.YELLOW.getRGB());
     drawer.ellipse(x-10,y-10,20,20);
   }
 }
