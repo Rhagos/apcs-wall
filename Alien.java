@@ -43,7 +43,7 @@ public class Alien extends Person{
 	// float xRatio = drawer.width/500f; // java sees 500 as an automatic int type
 	// drawer.scale(xRatio,yRatio)
 
-	 drawer.ellipse(defaultX,defaultY,defaultW,defaultH); 
+	 drawer.ellipse(x,y,20,30); 
 	 //drawer.popMatrix();
 		}
 }
