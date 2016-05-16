@@ -2,16 +2,25 @@ public class WallGame
 {
   public static void main(String[]  args)
   {
-    Wall marker = new Wall();
-    Person dude = new Person();
-		marker.init();
+    Wall wall = new Wall();
+    Gaurd gaurd = new Gaurd();
+    Alien zerg = new Alien();
+    Worker worker = new Worker();
+    
+		wall.init();
 		person.init();
-		JFrame window = new JFrame();
-		window.setSize(500, 500);
+		zerg.init();
+		woerker.init();
+		
+	JFrame window = new JFrame();
+	window.setSize(500, 500);
 		
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.add(marker);
-		window.add(dude);
+		window.add(wall);
+		window.add(gaurd);
+		window.add(worker);
+		window.add(zerg);
+		
 		window.setVisible(true);
   
   }
