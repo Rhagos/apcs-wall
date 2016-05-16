@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 import processing.core.PApplet;
 /** 
  *  This class represents a Wall which is made up of Wallpieces 
@@ -50,7 +51,7 @@ public class Wall{
   **/
   public void draw(PApplet drawer){
     for(int i = 0; i < wall.size(); i++){
-      wall.get(i).draw(drawer, wallX + 50*i, wallY);
+      wall.get(i).draw(drawer, (float)(wallX + 50*i), (float)wallY);
     }
   }
 
