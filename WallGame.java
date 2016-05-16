@@ -14,7 +14,7 @@ public class WallGame
 	drawing.addPerson(wall);
 	drawing.addPerson(gaurd);
 	drawing.addPerson(worker);
-	drawing.addAlien(zerg);
+	drawing.addEnemy(zerg);
 	drawing.init();
 	
 	JFrame window = new JFrame();
