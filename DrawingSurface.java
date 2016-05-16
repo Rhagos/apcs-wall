@@ -49,7 +49,7 @@ public class DrawingSurface extends PApplet{
 		}
 		float xE = 50;
 		float xY = y + 100;
-		for(Alien p:residents){
+		for(Alien p:enemies){
 			p.draw(this, x, y);
 			x += 50;
 			if(x > 500){
