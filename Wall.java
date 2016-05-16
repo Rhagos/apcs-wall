@@ -24,5 +24,6 @@ public class Wall{
     }
     return damaged;
   }
+
   
 }
