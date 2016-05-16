@@ -11,19 +11,17 @@ public class WallGame
   {
   	DrawingSurface drawing = new DrawingSurface();
   	
-//	Wall wall = new Wall();
-//	Gaurd gaurd = new Gaurd();
-//    	Alien zerg = new Alien();
-//    	Worker worker = new Worker();
-//	JFrame window = new JFrame();
-	
-//	drawing.addPerson(wall);
-//	drawing.addPerson(gaurd);
-//	drawing.addPerson(worker);
-//	drawing.addEnemy(zerg);
-//	drawing.init();
-	
+	Wall wall = new Wall();
+	Guard gaurd = new Guard(0,0);
+	Alien zerg = new Alien(0, 0);
+	Worker worker = new Worker(0, 0);
 	JFrame window = new JFrame();
+	
+	drawing.addPerson((Person) gaurd);
+	drawing.addPerson(worker);
+	drawing.addEnemy(zerg);
+	drawing.init();
+	
 	window.setSize(500, 500);
 	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	window.add(drawing);
