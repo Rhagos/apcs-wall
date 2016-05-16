@@ -1,4 +1,5 @@
 import java.awt.Color;
+
 import processing.core.PApplet;
 /** 
  *  This class represents a worker who is a typer Person and thus has all of Person qualities
