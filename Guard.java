@@ -1,3 +1,4 @@
+import processing.core.PApplet;
 public class Guard extends Person{
 
   public Guard(double x, double y){
