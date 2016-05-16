@@ -17,6 +17,9 @@ public class WallGame
 	Worker worker = new Worker(0, 0);
 	JFrame window = new JFrame();
 	
+	for(int i = 0; i < 7; i++){
+		drawing.addPiece(new WallPiece());
+	}
 	drawing.addPerson((Person) gaurd);
 	drawing.addPerson(worker);
 	drawing.addEnemy(zerg);
