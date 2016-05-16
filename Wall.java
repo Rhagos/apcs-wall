@@ -2,9 +2,13 @@ import java.util.ArrayList;
 
 public class Wall{
   private ArrayList<WallPiece> wall;
+  private double wallX;
+  private double wallY;
   public Wall()
   {
     wall = new ArrayList<WallPiece>();
+    wallX = 0;
+    wallY = 50;
   }
   
   public void addPiece(WallPiece wp)
@@ -26,7 +30,7 @@ public class Wall{
   }
   public void draw(PApplet drawer){
     for(int i = 0; i < wall.size(); i++){
-      wall.get(i).draw(drawer)
+      wall.get(i).draw(drawer, wallX + 50*i, wallY);
     }
   }
 
