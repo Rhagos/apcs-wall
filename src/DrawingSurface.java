@@ -9,6 +9,7 @@ import processing.core.PApplet;
 public class DrawingSurface extends PApplet{
 	ArrayList<Person> residents;
 	ArrayList<Alien> enemies;
+	Player pl;
 	Wall wall;
 	/** 
 	 *  No Args constructor for Drawing Surface initializes the two types of different objects used in the game,
@@ -18,23 +19,27 @@ public class DrawingSurface extends PApplet{
 		residents = new ArrayList<Person>();
 		enemies = new ArrayList<Alien>();
 		wall = new Wall();
+		pl = new Player();
 	}
 	/**
 	 * 	Adds people objects onto the drawing surface by adding them onto the resident arrraylist
 	 * */
 	public void addPerson(Person p){
-	  	residents.add(p);
+		residents.add(p);
+	  	pl.addToFriendly(p);
 	}
 	/**
 	 * 	Adds alien objects onto the drawing surface by adding them onto the enemy arrraylist
 	 * */
 	public void addEnemy(Alien a){
 		enemies.add(a);
+		pl.addToEnemies(a);
 	}
-	public void addPiece(WallPiece p){
-		wall.addPiece(p);
+	public void addPiece(){
+		wall.buildWall();
 	}
 	public void setup(){
+		
 		
 	}
 	/**
@@ -42,26 +47,25 @@ public class DrawingSurface extends PApplet{
 	 * */
 	public void draw(){
 		background(255);
-		float x = 50;
-		float y = 50;
+		ArrayList<Worker> workers = new ArrayList<Worker>();
+		ArrayList<Guard> guards = new ArrayList<Guard>();
 		for(Person p:residents){
-			p.draw(this, x, y);
-			x += 50;
-			if(x > 500){
-				x = 50;
-				y+= 100;
-			}
+			p.draw(this);
+			
+			p.act(pl);
+			redraw();
 		}
-		float xE = 50;
-		float xY = y + 100;
 		for(Alien p:enemies){
-			p.draw(this, x, y);
-			x += 50;
-			if(x > 500){
-				x = 50;
-				y+= 100;
-			}
+			p.draw(this);
 		}
 		wall.draw(this);
+		
+		
+		
+		
+	}
+	public void mouseClicked(){
+		addPiece();
+		redraw();
 	}
 }
