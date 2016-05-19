@@ -1,7 +1,9 @@
 import javax.swing.JFrame;
 
 import processing.core.PApplet;
-
+/**
+ *  Lists the instructions of the game 
+ * */
 public class Instructions extends PApplet {
 
 	public void draw(){
