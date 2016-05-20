@@ -11,14 +11,16 @@ public class WallPiece{
   public static final double MAX_HP = 10000;
   private double hp;
   private double x,y;
+  private int num;
   /** 
    *  Wallpiece constructor sets up the default HP value for each part of wall
    * */
-  public WallPiece(double x, double y)
+  public WallPiece(double x, double y, int pieceNum)
   {
     hp = MAX_HP;
     this.x = x;
     this.y = y;
+    num = pieceNum;
   }
   /**
    *  GetHp returns the curret HP of the Wallpiece
@@ -40,24 +42,26 @@ public class WallPiece{
 		  hp = MAX_HP;
   }
   
-  /**
-   * Gets the direction to the target
-   * @param p Person that is the target
-   * @return direction in degrees
-   */
-  public double directionTo(Person p){
-	  return Math.toDegrees(Math.atan2(p.getX() - x, p.getY() - y));
+  public void damageWall(double d){
+	  hp -= d;
+	  if(hp <= -30){
+		  destroyWall(DrawingSurface.pl);
+	  }
   }
   
-  /**
-   * Gets the distance to the target
-   * @param p target person
-   * @return distance between the two
-   */
-  public double distanceTo(Person p){
-	  return Math.sqrt(Math.pow(p.getX() - x, 2) + Math.pow(p.getY() - y, 2));
+  public void destroyWall(Player p){
+	  if(p.getWall().getWallParts().contains(this)){
+		  p.getWall().getWallParts().add(num, null);
+		  p.getWall().getWallParts().remove(num+1);
+	  }
   }
-  
+
+  public double getX(){
+	  return x;
+  }
+  public double getY(){
+	  return y;
+  }
    /**	Draws a new instance of a Wallpiece object with the origin set at x,y 
   * 	 @param drawer the PApplet used to draw the Wallpiece
   *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
