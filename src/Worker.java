@@ -32,9 +32,16 @@ public class Worker extends Person{
    * @param p Player object containing the other objects
    */
   public void act(Player p){
+	  super.act(p);
 	  Wall targetWall = p.getWall();
 	  WallPiece target = targetWall.getDamaged();
-	  move(-1* directionTo(new Person(0,200)), 5);
+	  if(target != null && target.getHP() < WallPiece.MAX_HP){
+		  if(distanceTo(new Person(target.getX(),target.getY())) <= 10){
+			  repair(target);
+		  }else
+			  move(-1* directionTo(new Person(target.getX(),target.getY())), 5);
+	  }
+	 
   }
   
  /**	Draws a new instance of a Person object with the origin set at x,y 
