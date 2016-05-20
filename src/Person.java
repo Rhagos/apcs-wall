@@ -17,10 +17,9 @@ public class Person
   private double hiringPrice;
   private double locX;
   private double locY;
-  private int defaultX;
-  private int defaultY;
-  private int defaultW;
-  private int defaultH;
+  private int level;
+  private int xp;
+  private int threshold;
   
 /**
  * 	Creates a default instance of Person with a default position as well as starting a tastqueu for the person
@@ -34,6 +33,9 @@ public class Person
     locY = y;
     taskQueue = new ArrayList<String>();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
     hiringPrice = 200;
+    level = 0;
+    xp = 0;
+    threshold = 1000;
   }
   /**
    * Moves the person to a new location by changing the x and y coordinate given an angle and distance 
@@ -44,9 +46,43 @@ public class Person
   public void move(double dir, double distance)
   {
     //Timer in main thread
-    locX = Math.cos(dir) * distance;
-    locY = Math.sin(dir) * distance;
+    locX += Math.cos(Math.toRadians(dir)) * distance;
+    locY += Math.sin(Math.toRadians(dir)) * distance;
+    
   }
+
+  
+  /**
+   * Returns x-coord
+   * @return returns x-coord
+   */
+  public double getX(){
+	  return locX;
+  }
+  /**
+   * Returns y-coord
+   * @return returns y-coord
+   */
+  public double getY(){
+	  return locY;
+  }
+  
+  /**
+   * Sets a value to the x-coord
+   * @param x new x value
+   */
+  public void setX(double x){
+	  locX = x;
+  }
+
+  /**
+   * Sets a value to the y-coord
+   * @param y new y value
+   */
+  public void setY(double y){
+	  locY = y;
+  }
+  
   /**
    * Adds on tasks that are then followed in sequential order that the Person recieves them in
    * @param task specific task the person needs to complete at when it reaches the end of the taskqueue
@@ -87,22 +123,65 @@ public class Person
   public double getPrice(){
 	  return hiringPrice;
   }
+  /**
+   * Returns the current level of the person
+   * @return current level of the person
+   */
+  public int getLevel(){
+	return level;  
+  }
+  /**
+   * Adds experience to the person
+   * @param xp Amount of experience added
+   * @pre xp is a nonnegative amount
+   */
+  public void addXP(int exp){
+	  xp += exp;
+  }
+  /**
+   * Performs the action that the person is designed to do
+   */
+  public void act(Player p){
+	  if(xp > threshold){
+		  level += 1;
+		  xp = 0;
+		  System.out.println("Level " + level);
+	  }
+  }
+  /**
+   * Gets the direction to the target
+   * @param p Person that is the target
+   * @return direction in degrees
+   */
+  public double directionTo(Person p){
+	  double angle = Math.toDegrees(Math.atan2(p.getX() - getX(), p.getY() - getY()));
+	  if(p.getX() > getX()){
+		  if(p.getY() > getY()){
+			  angle += 180;
+		  }
+		  angle *= -1;
+		  angle += 180;
+	  }
+	  return angle;
+  }
+  
+  /**
+   * Gets the distance to the target
+   * @param p target person
+   * @return distance between the two
+   */
+  public double distanceTo(Person p){
+	  return Math.sqrt(Math.pow(p.getX() - getX(), 2) + Math.pow(p.getY() - getY(), 2));
+  }
+  
   /**	Draws a new instance of a Person object with the origin set at x,y 
    * 	@param drawer the PApplet used to draw the Person
    *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
    * */
-   public void draw(PApplet drawer, float x, float y)
+   public void draw(PApplet drawer)
    {
 	 drawer.stroke(0);
-	 locX = x; 
-	 locY = y; 
-		// float yRatio = drawer.height/500f; // float can be either cast via (float) or f behind the integer
-		// float xRatio = drawer.width/500f; // java sees 500 as an automatic int type
-		// drawer.scale(xRatio,yRatio)
-		
-		
+	 drawer.noFill();
 	 drawer.ellipse((float)locX,(float)locY,(float)30,(float)30); 
-	     //drawer.popMatrix();
 	}
-  
 }
