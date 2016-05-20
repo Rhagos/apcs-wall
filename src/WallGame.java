@@ -18,11 +18,11 @@ public class WallGame
   	AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File("MenuMusic.mp3"));
   	Clip clip = AudioSystem.getClip();
   	clip.open(inputStream);
-  	clip.loop(clip.LOOP_CONTINUOUSLY);
+  	clip.loop(Clip.LOOP_CONTINUOUSLY);
 	return null;
   	
   }
- public static void main(String[]  args)
+  public static void main(String[]  args)
   {
   	DrawingSurface drawing = new DrawingSurface();
   	
@@ -31,6 +31,9 @@ public class WallGame
 	Worker worker = new Worker(250, 150);
 	JFrame window = new JFrame();
 	
+	for(int i = 0; i < 10; i++){
+		drawing.addPiece();
+	}
 	drawing.addPerson(gaurd);
 	drawing.addPerson(worker);
 	drawing.addEnemy(zerg);
