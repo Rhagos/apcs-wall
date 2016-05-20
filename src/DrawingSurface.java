@@ -9,7 +9,7 @@ import processing.core.PApplet;
 public class DrawingSurface extends PApplet{
 	ArrayList<Person> residents;
 	ArrayList<Alien> enemies;
-	Player pl;
+	static Player pl;
 	Wall wall;
 	/** 
 	 *  No Args constructor for Drawing Surface initializes the two types of different objects used in the game,
@@ -36,7 +36,7 @@ public class DrawingSurface extends PApplet{
 		pl.addToEnemies(a);
 	}
 	public void addPiece(){
-		wall.buildWall();
+		pl.getWall().buildWall();
 	}
 	public void setup(){
 		
@@ -47,25 +47,23 @@ public class DrawingSurface extends PApplet{
 	 * */
 	public void draw(){
 		background(255);
-		ArrayList<Worker> workers = new ArrayList<Worker>();
-		ArrayList<Guard> guards = new ArrayList<Guard>();
 		for(Person p:residents){
 			p.draw(this);
-			
 			p.act(pl);
-			redraw();
 		}
 		for(Alien p:enemies){
 			p.draw(this);
+			p.act(pl);
 		}
-		wall.draw(this);
+		redraw();
+		
+		
+		pl.getWall().draw(this);
 		
 		
 		
 		
 	}
 	public void mouseClicked(){
-		addPiece();
-		redraw();
 	}
 }
