@@ -51,3 +51,8 @@ Responsibility List:
 Anthony will do DrawingSurface, Wall, Wallpiece, Player, + sprites   
 Daniel will do Person, Worker, Guard, Player  
 
+Sprite Resources:
+------------------------------------------------------------------------------------
+http://millionthvector.blogspot.com/
+http://7soul1.deviantart.com/art/Spaceship-Game-Sprites-385923888
+http://unluckystudio.com/free-top-down-shooterplayer-sprites/
