@@ -51,7 +51,7 @@ public class Guard extends Person{
 			  
 		  }
 	  }
-	  double minDist = Double.MAX_VALUE;
+	  double minDist = Integer.MAX_VALUE;
 	  Alien target = null;
 	  for(int i = 0; i < aliens.size(); i++){
 		  Alien ay = aliens.get(i);
@@ -60,7 +60,7 @@ public class Guard extends Person{
 		  }
 	  }
 	  if(target != null)
-		  move(-1 * directionTo(target),5);
+		  move((int)(-1 * directionTo(target)),5);
 	  else{
 		  move(patrolDir,5);
 		  patrolTimer++;

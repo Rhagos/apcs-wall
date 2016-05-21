@@ -39,7 +39,7 @@ public class Worker extends Person{
 		  if(distanceTo(new Person(target.getX(),target.getY())) <= 10){
 			  repair(target);
 		  }else
-			  move(-1* directionTo(new Person(target.getX(),target.getY())), 5);
+			  move((int)directionTo(new Person(target.getX(),target.getY())), 5);
 	  }
 	 
   }

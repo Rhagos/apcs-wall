@@ -1,5 +1,10 @@
 
 import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.image.ImageObserver;
+
+import javax.swing.ImageIcon;
 
 import processing.core.PApplet;
 /** 
@@ -62,13 +67,27 @@ public class WallPiece{
   public double getY(){
 	  return y;
   }
+  
+  public Image getImage(){
+	  if(hp > 7500){
+		  return new ImageIcon("Dungeon Floor Updated/Wall_1.png").getImage();
+	  }
+	  if(hp > 5000){
+		  return new ImageIcon("Dungeon Floor Updated/Wall_2.png").getImage();
+	  }
+	  if(hp > 2500){
+		  return new ImageIcon("Dungeon Floor Updated/Wall_3.png").getImage();
+	  }
+	  else{
+		  return null;
+	  }
+  }
    /**	Draws a new instance of a Wallpiece object with the origin set at x,y 
   * 	 @param drawer the PApplet used to draw the Wallpiece
   *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
   **/
-  public void draw(PApplet drawer, float x, float y){
-    drawer.stroke(Color.RED.getRGB());
-    drawer.fill(Color.LIGHT_GRAY.getRGB());
-    drawer.rect(x,y,50,50);
+  public void draw(Graphics2D drawer, ImageObserver io){
+	  
+    
   }
 }

@@ -70,14 +70,14 @@ public class Player
 		  addToFriendly(a);
 	  }
 	  
-	  public void updatePosition(Person p){
-		  if(p instanceof Alien){
-			  if(enemies[(int) p.getX()][(int) p.getY()] == null){
-				  enemies[(int) p.getX()][(int) p.getY()] = (Alien) p;
+	  public void updatePosition(Entity e){
+		  if(e instanceof Alien){
+			  if(enemies[(int) e.getX()][(int) e.getY()] == null){
+				  enemies[(int) e.getX()][(int) e.getY()] = (Alien) e;
 			  }
 		  }else{
-			  if(friendly[(int) p.getX()][(int) p.getY()] == null){
-				  friendly[(int) p.getX()][(int) p.getY()] = (Alien) p;
+			  if(friendly[(int) e.getX()][(int) e.getY()] == null){
+				  friendly[(int) e.getX()][(int) e.getY()] = (Person) e;
 			  }
 		  }
 	  }

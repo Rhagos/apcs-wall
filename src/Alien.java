@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
@@ -10,25 +12,19 @@ import processing.core.PApplet;
  * 
  **/
 
-public class Alien extends Person{
+public class Alien extends Entity{
 	
-	  private double locX;
-  	  private double locY;
-	  private int defaultX;
-	  private int defaultY;
-	  private int defaultW;
-	  private int defaultH;
-/**
- * 	Creates a default instance of Alien with a default position as well as starting a tastqueu for the person
- * 	and setting the default hiringprice to 200
- * 	@param x x-coordinate of the alien
- * 	@param y y-coordinate of the alien
- * */
+	private double HP;
+	private double maxHP;
+	/**
+	 * 	Creates a default instance of Alien with a given position and set dimensions of 30x20
+	 * 	@param x x-coordinate of the alien
+	 * 	@param y y-coordinate of the alien
+	 * */
 	  public Alien(double x, double y)
 	  {
-		super(x,y);
-	    locX = x;
-	    locY= y;
+		  super("Dungeon Floor Updated/Wall_5.png", (int) x, (int) y, 30, 20);
+	    
 	  }
 	  
 	  /**
@@ -42,7 +38,7 @@ public class Alien extends Person{
 			  if(distanceTo(new Person(target.getX(),target.getY())) < 60){
 				  target.damageWall(10);
 			  }else{
-				  move(-1 *directionTo(new Person(target.getX(),target.getY())), 2);
+				  move((int)(-1 *directionTo(new Person(target.getX(),target.getY()))), 2);
 			  }
 		  }
 	  }
@@ -60,15 +56,4 @@ public class Alien extends Person{
 		  }
 		  return target;
 	  }
-	  
-   /**	Draws a new instance of a Alien object with the origin set at x,y 
-   * 	@param drawer the PApplet used to draw the Alien
-   *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
-   * */
-	public void draw(PApplet drawer)
-	{
-		drawer.stroke(0);
-		drawer.fill(Color.ORANGE.getRGB());
-		 drawer.ellipse((float)getX(),(float)getY(),20,30); 
-		}
 }

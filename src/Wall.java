@@ -1,3 +1,5 @@
+import java.awt.Graphics2D;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
 import processing.core.PApplet;
@@ -58,10 +60,10 @@ public class Wall{
   *   	@param drawer the PApplet used to draw the Wall by running through al the Wallpieces and initializing them in a line
   *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
   **/
-  public void draw(PApplet drawer){
+  public void draw(Graphics2D g, ImageObserver io){
     for(int i = 0; i < wall.size(); i++){
     	if(wall.get(i)	!= null)
-    		wall.get(i).draw(drawer, (float)(wallX + 50*i), (float)wallY);
+    		wall.get(i).draw(g, io);
     }
   }
 
