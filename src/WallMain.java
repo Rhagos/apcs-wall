@@ -1,3 +1,4 @@
+
 import java.awt.CardLayout;
 
 import javax.swing.JFrame;
@@ -17,11 +18,13 @@ JPanel cardPanel;
 	    
 		WallOptionScreen panel1 = new WallOptionScreen(this);    
 	    WallGameScreen panel2 = new WallGameScreen();
+	    WallBuyScreen panel3 = new WallBuyScreen(this);
 	    
 	    addKeyListener(panel2.new KeyHandler());
-	
+	    
 	    cardPanel.add(panel1,"1");
 	    cardPanel.add(panel2,"2");
+	    cardPanel.add(panel3,"3");
 	    
 	    add(cardPanel);
 	
@@ -30,12 +33,14 @@ JPanel cardPanel;
 
 	public static void main(String[] args)
 	{
-		WallMain w = new WallMain("AP Animation Demo");
+		WallMain w = new WallMain("AP Early Access 1.01.2.3vAlpha");
 	}
   
 	public void changePanel() { 
 	
 		((CardLayout)cardPanel.getLayout()).show(cardPanel,"2");
+		requestFocus();
+		((CardLayout)cardPanel.getLayout()).show(cardPanel,"3");
 		requestFocus();
 	}
 }
