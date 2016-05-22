@@ -29,6 +29,11 @@ public class Worker extends Person{
 	  w.healWall(getLevel() * 10);
 	  addXP(10);
   }
+    public Image getImage()
+  {
+	  return new ImageIcon("WorkerSprites/Worker_1.png").getImage();
+	  
+  }
   /**
    * Moves the worker towards the wall
    * @param p Player object containing the other objects
