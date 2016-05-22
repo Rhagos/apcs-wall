@@ -56,4 +56,9 @@ public class Alien extends Entity{
 		  }
 		  return target;
 	  }
+	   public Image getImage()
+	  {
+		  return new ImageIcon("AlienSprite/Alien_1.png").getImage();
+		  
+	  }
 }
