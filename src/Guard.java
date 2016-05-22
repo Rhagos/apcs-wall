@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import processing.core.PApplet;
 /** 
  *  This class represents a guard who is a typer Person and thus has all of Person qualities
@@ -18,7 +20,7 @@ public class Guard extends Person{
  * 	@param y y-coordinate of the guard
  * */
   public Guard(double x, double y){
-    super(x,y);
+    super("Dungeon Floor Updated/Wall_7.png",x,y);
     patrolDir = 0;
     patrolTimer = 0;
   }
@@ -35,6 +37,26 @@ public class Guard extends Person{
    */
   public void act(Player pl){
 	  super.act(pl);
+	  Alien target = getClosest(pl);
+	  if(target!= null)
+	  if(distanceTo(target) < 65){
+		  target.setHP(target.getHP()-50);
+		  System.out.println(target.getHP());
+	  }
+	  if(target != null)
+		  move((int)(-1 * directionTo(target)),5);
+	  else{
+		  move(patrolDir,5);
+		  patrolTimer++;
+		  if(patrolTimer >= PATROL_TIME){
+			  patrolDir += 90;
+			  patrolTimer = 0;
+		  }
+	  }
+	  
+	  
+  }
+  public Alien getClosest(Player pl){
 	  Alien[][] grid = pl.getEnemies();
 	  ArrayList<Alien> aliens = new ArrayList<Alien>();
 	  for(int i = -50; i < 50; i++){
@@ -59,26 +81,7 @@ public class Guard extends Person{
 			  target = ay;
 		  }
 	  }
-	  if(target != null)
-		  move((int)(-1 * directionTo(target)),5);
-	  else{
-		  move(patrolDir,5);
-		  patrolTimer++;
-		  if(patrolTimer >= PATROL_TIME){
-			  patrolDir += 90;
-			  patrolTimer = 0;
-		  }
-	  }
-	  
-	  
+	  return target;
   }
- /**	Draws a new instance of a Person object with the origin set at x,y 
-  * 	@param drawer the PApplet used to draw the Person
-  *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
-  **/
-  public void draw(PApplet drawer){
-	  super.draw(drawer);
-	  drawer.fill(Color.RED.getRGB());
-	  drawer.rect((float)getX()-10,(float)getY()-10,20,20);
-  }
+
 }

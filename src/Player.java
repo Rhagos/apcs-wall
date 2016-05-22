@@ -13,7 +13,8 @@ public class Player
 	   */
 	  public Player(){
 		  hired = new ArrayList<Person>();
-		  funds = 1000;
+		  enemy = new ArrayList<Alien>();
+		  funds = 1000000;
 	  }
 	  /**
 	   * Hires a person for their cost
@@ -23,7 +24,7 @@ public class Player
 	   */
 	  public void hire(Person p){
 		  if(funds >= p.getPrice()){
-			  hired.add(p);
+			  addToFriendly(p);
 			  funds -= p.getPrice();
 		  }
 		  
@@ -48,6 +49,7 @@ public class Player
 			  return;
 		  }
 		  if(enemies[(int) a.getX()][(int) a.getY()] == null){
+			  enemy.add(a);
 			  enemies[(int) a.getX()][(int) a.getY()] = a;
 			  return;
 		  }
@@ -61,6 +63,7 @@ public class Player
 			  return;
 		  }
 		  if(friendly[(int) a.getX()][(int) a.getY()] == null){
+			  hired.add(a);
 			  friendly[(int) a.getX()][(int) a.getY()] = a;
 			  return;
 		  
@@ -68,6 +71,19 @@ public class Player
 		  a.setX(a.getX()+1);
 		  a.setY(a.getY()+1);
 		  addToFriendly(a);
+		  
+	  }
+	  
+	  public void removeFriendly(Person a){
+		  if(!(a.getX() >= 0 && a.getX() < 500) && !(a.getY() >= 0 && a.getY() < 500)){
+			  return;
+		  }
+		  if(friendly[(int) a.getX()][(int) a.getY()].equals(a)){
+			  hired.add(a);
+			  friendly[(int) a.getX()][(int) a.getY()] = a;
+			  return;
+		  
+		  }
 	  }
 	  
 	  public void updatePosition(Entity e){
@@ -87,6 +103,12 @@ public class Player
 	  }
 	  public Alien[][] getEnemies(){
 		  return enemies;
+	  }
+	  public ArrayList<Person> getHired(){
+		  return hired;
+	  }
+	  public ArrayList<Alien> getEnemy(){
+		  return enemy;
 	  }
 	  public Wall getWall(){
 		  return walls;

@@ -1,4 +1,8 @@
+import java.awt.Image;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
+
 import processing.core.PApplet;
 /**
  * This class represents a person which is the base for all people in the game 
@@ -22,9 +26,9 @@ public class Person extends Entity
  * 	@param x x-coordinate of the person
  * 	@param y y-coordinate of the person
  * */
-  public Person(double x, double y)
+  public Person(String image,double x, double y)
   {
-	  super("",(int)x,(int)y,30,30);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+	  super(image,(int)x,(int)y,30,30);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
 	  hiringPrice = 200;
 	  level = 0;
 	  xp = 0;
@@ -48,11 +52,5 @@ public class Person extends Entity
 		  threshold += level * 1000;
 	  }
   }
-   public void draw(PApplet drawer)
-   {
-	 drawer.stroke(0);
-	 drawer.noFill();
-	 drawer.ellipse((float)getX(),(float)getY(),(float)30,(float)30); 
-	}
    
 }

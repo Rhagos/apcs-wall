@@ -17,15 +17,19 @@ public class WallPiece{
   private double hp;
   private double x,y;
   private int num;
+  private boolean destroyed;
+  private Wall wall;
   /** 
    *  Wallpiece constructor sets up the default HP value for each part of wall
    * */
-  public WallPiece(double x, double y, int pieceNum)
+  public WallPiece(double x, double y, int pieceNum, Wall w)
   {
     hp = MAX_HP;
     this.x = x;
     this.y = y;
+    destroyed = false;
     num = pieceNum;
+    wall = w;
   }
   /**
    *  GetHp returns the curret HP of the Wallpiece
@@ -49,15 +53,15 @@ public class WallPiece{
   
   public void damageWall(double d){
 	  hp -= d;
-	  if(hp <= -30){
-		  destroyWall(DrawingSurface.pl);
+	  if(hp <= -30 && !destroyed){
+		  destroyWall();
 	  }
   }
   
-  public void destroyWall(Player p){
-	  if(p.getWall().getWallParts().contains(this)){
-		  p.getWall().getWallParts().add(num, null);
-		  p.getWall().getWallParts().remove(num+1);
+  public void destroyWall(){
+	  if(wall.getWallParts().contains(this)){
+		  wall.getWallParts().add(num, null);
+		  wall.getWallParts().remove(num+1);
 	  }
   }
 
@@ -87,7 +91,7 @@ public class WallPiece{
   *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)
   **/
   public void draw(Graphics2D drawer, ImageObserver io){
-	  
+	  drawer.drawImage(getImage(), (int)getX(), (int)getY(), 50, 50, io);
     
   }
 }

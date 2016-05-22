@@ -3,6 +3,8 @@ import java.awt.Graphics2D;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 import processing.core.PApplet;
 /**
  * This class represents an alien which is the base for all enemies in the game 
@@ -13,9 +15,6 @@ import processing.core.PApplet;
  **/
 
 public class Alien extends Entity{
-	
-	private double HP;
-	private double maxHP;
 	/**
 	 * 	Creates a default instance of Alien with a given position and set dimensions of 30x20
 	 * 	@param x x-coordinate of the alien
@@ -23,7 +22,7 @@ public class Alien extends Entity{
 	 * */
 	  public Alien(double x, double y)
 	  {
-		  super("Dungeon Floor Updated/Wall_5.png", (int) x, (int) y, 30, 20);
+		  super("Dungeon Floor Updated/Wall_1.png", (int) x, (int) y, 30, 20);
 	    
 	  }
 	  
@@ -32,25 +31,26 @@ public class Alien extends Entity{
 	   * @param p Player object containing the other objects
 	   */
 	  public void act(Player p){
+		  super.act(p);
 		  Wall targetWall = p.getWall();
 		  WallPiece target = getClosest(targetWall);
 		  if(target != null){
-			  if(distanceTo(new Person(target.getX(),target.getY())) < 60){
+			  if(distanceTo(new Person(null,target.getX()+25,target.getY()+25)) < 60){
 				  target.damageWall(10);
 			  }else{
-				  move((int)(-1 *directionTo(new Person(target.getX(),target.getY()))), 2);
+				  move((int)(-1 * directionTo(new Person(null,target.getX()+25,target.getY()+25))), 2);
 			  }
 		  }
 	  }
 	  
 	  public WallPiece getClosest(Wall w){
 		  double maxDist = Integer.MAX_VALUE;
-		  WallPiece target = new WallPiece(999,999,999);
+		  WallPiece target = new WallPiece(999,999,999,w);
 		  for(int i = 0; i < w.getWallParts().size(); i++){
 			  WallPiece temp = w.getWallParts().get(i);
 			  if(temp != null)
-			  if(distanceTo(new Person(temp.getX(),temp.getY())) < maxDist){
-				  maxDist = distanceTo(new Person(target.getX(),target.getY()));
+			  if(distanceTo(new Person(null,temp.getX(),temp.getY())) < maxDist){
+				  maxDist = distanceTo(new Person(null,target.getX(),target.getY()));
 				  target = w.getWallParts().get(i);
 			  }
 		  }

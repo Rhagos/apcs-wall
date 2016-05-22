@@ -8,8 +8,9 @@ public abstract class Entity extends MovingImage{
 	private int level;
 	private int xp;
 	private int threshold;
-	public Entity(String img, int x, int y, int w, int h) {
-		super(img, x, y, w, h);
+	public Entity(String image, int x, int y, int w, int h) {
+		super(image, x, y, w, h);
+		HP = 200;
 		level = 0;
 		xp = 0;
 		threshold = 1000;
@@ -50,7 +51,14 @@ public abstract class Entity extends MovingImage{
 	/**
 	 * Performs the action that the person is designed to do
 	 */
-	public abstract void act(Player p);
+	public void act(Player p){
+		if(HP <= 0){
+			if(this instanceof Alien)
+				p.getEnemy().remove(this);
+			if(this instanceof Person)
+				p.getHired().remove(this);
+		}
+	}
 	/**
 	 * Adds experience to the person
 	 * @param xp Amount of experience added

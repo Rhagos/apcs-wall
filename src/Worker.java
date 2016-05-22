@@ -1,5 +1,7 @@
 import java.awt.Color;
 
+import javax.swing.ImageIcon;
+
 import processing.core.PApplet;
 /** 
  *  This class represents a worker who is a typer Person and thus has all of Person qualities
@@ -15,7 +17,7 @@ public class Worker extends Person{
  * */
   public Worker(double x, double y)
   {
-    super(x,y);
+    super("Dungeon Floor Updated/Wall_9.png",x,y);
   }
   
   /**
@@ -36,22 +38,12 @@ public class Worker extends Person{
 	  Wall targetWall = p.getWall();
 	  WallPiece target = targetWall.getDamaged();
 	  if(target != null && target.getHP() < WallPiece.MAX_HP){
-		  if(distanceTo(new Person(target.getX(),target.getY())) <= 10){
+		  if(distanceTo(new Person(null,target.getX(),target.getY())) <= 10){
 			  repair(target);
 		  }else
-			  move((int)directionTo(new Person(target.getX(),target.getY())), 5);
+			  move((int)directionTo(new Person(null,target.getX(),target.getY())), 5);
 	  }
 	 
   }
-  
- /**	Draws a new instance of a Person object with the origin set at x,y 
-  * 	@param drawer the PApplet used to draw the Person
-  *    @pre drawer must not be null and appropriate settings should already be initialized (color, fill,etc)
-  **/
-  public void draw(PApplet drawer)
-  {
-    super.draw(drawer);
-    drawer.fill(Color.YELLOW.getRGB());
-    drawer.ellipse((float)getX()-10,(float)getY()-10,20,20);
-  }
+
 }

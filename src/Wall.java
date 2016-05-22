@@ -29,7 +29,7 @@ public class Wall{
    * */
   public void buildWall()
   {
-	WallPiece tenfeethigher = new WallPiece(wall.size() * 50 + wallX, wallY, numbers);
+	WallPiece tenfeethigher = new WallPiece(wall.size() * 50 + wallX, wallY, numbers,this);
 	numbers++;
 	wall.add(tenfeethigher);
   }
