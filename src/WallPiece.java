@@ -20,7 +20,7 @@ public class WallPiece{
   private boolean destroyed;
   private Wall wall;
   /** 
-   *  Wallpiece constructor sets up the default HP value for each part of wall
+   *  WallPiece constructor sets up the default HP value for each part of wall
    * */
   public WallPiece(double x, double y, int pieceNum, Wall w)
   {
@@ -61,7 +61,7 @@ public class WallPiece{
   public void destroyWall(){
 	  if(wall.getWallParts().contains(this)){
 		  wall.getWallParts().add(num, null);
-		  wall.getWallParts().remove(num+1);
+   		  wall.getWallParts().remove(num+1);
 	  }
   }
 
