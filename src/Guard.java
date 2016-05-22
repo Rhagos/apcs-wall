@@ -31,6 +31,11 @@ public class Guard extends Person{
   {
     return false;
   }
+    public Image getImage()
+  {
+	  return new ImageIcon("GuardSprite/Guard_1.png").getImage();
+	  
+  }
   /**
    * Moves the guard towards the aliens
    * @param pl Player object containing the other objects
