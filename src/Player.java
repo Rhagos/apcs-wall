@@ -4,17 +4,22 @@ public class Player
 {
 	  private ArrayList<Person> hired;
 	  private ArrayList<Alien> enemy;
-	  private Person[][] friendly = new Person[500][500];
-	  private Alien[][] enemies = new Alien[500][500];
 	  private Wall walls = new Wall();
+	  private ArrayList<Entity> entities;
+	  private ArrayList<Person> buyList;
+	  private Spawner spawn;
 	  private double funds;
+	  private Base HQ;
 	  /**
 	   * Represents the player and the funds and People that he or she has
 	   */
 	  public Player(){
 		  hired = new ArrayList<Person>();
 		  enemy = new ArrayList<Alien>();
-		  funds = 1000000;
+		  funds = 10000;
+		  spawn = new Spawner(200,350);
+		  entities = new ArrayList<Entity>();
+		  buyList = new ArrayList<Person>();
 	  }
 	  /**
 	   * Hires a person for their cost
@@ -24,10 +29,29 @@ public class Player
 	   */
 	  public void hire(Person p){
 		  if(funds >= p.getPrice()){
-			  hired.add(p);
+			  buyList.add(p);
 			  funds -= p.getPrice();
 		  }
 		  
+	  }
+	  
+	  public double getFunds(){
+		  return funds;
+	  }
+	  
+	  public void place(int x, int y){
+		  if(buyList.size() > 0){
+			  buyList.get(0).setX(x);
+			  buyList.get(0).setY(y);
+			  hired.add(buyList.get(0));
+			  entities.add(buyList.get(0));
+			  buyList.remove(0);
+		  }
+	  }
+	  
+	  public void addEnemy(Alien p){
+		  enemy.add(p);
+		  entities.add(p);
 	  }
 	  /**
 	   * Fires a person and returns half of the cost back to your funds
@@ -43,37 +67,13 @@ public class Player
 	  }
 	  
 	  public void removeFriendly(Person a){
-		  if(!(a.getX() >= 0 && a.getX() < 500) && !(a.getY() >= 0 && a.getY() < 500)){
-			  return;
-		  }
-		  if(friendly[(int) a.getX()][(int) a.getY()].equals(a)){
-			  hired.remove(a);
-			  friendly[(int) a.getX()][(int) a.getY()] = null;
-			  return;
-		  
-		  }
+		  hired.remove(a);
+		  entities.remove(a);
 	  }
 	  public void removeEnemy(Alien a){
+		  funds += 100;
 		  enemy.remove(a);
-	  }
-	  
-	  public void updatePosition(Entity e){
-		  if(e instanceof Alien){
-			  if(enemies[(int) e.getX()][(int) e.getY()] == null){
-				  enemies[(int) e.getX()][(int) e.getY()] = (Alien) e;
-			  }
-		  }else{
-			  if(friendly[(int) e.getX()][(int) e.getY()] == null){
-				  friendly[(int) e.getX()][(int) e.getY()] = (Person) e;
-			  }
-		  }
-	  }
-	  
-	  public Person[][] getPersonnel(){
-		  return friendly;
-	  }
-	  public Alien[][] getEnemies(){
-		  return enemies;
+		  entities.remove(a);
 	  }
 	  public ArrayList<Person> getHired(){
 		  return hired;
@@ -83,6 +83,15 @@ public class Player
 	  }
 	  public Wall getWall(){
 		  return walls;
+	  }
+	  public Spawner getSpawner(){
+		  return spawn;
+	  }
+	  public ArrayList<Entity> getEntities(){
+		  return entities;
+	  }
+	  public Base getHQ(){
+		  return HQ;
 	  }
 
 }

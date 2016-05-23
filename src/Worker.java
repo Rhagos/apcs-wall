@@ -9,7 +9,8 @@ import processing.core.PApplet;
  *   @version 5/15/16
  * */
 public class Worker extends Person{
-
+	private int patrolDir;
+	private int patrolTimer;
 /**
  *  Creates a Worker with default parameters at x and y 
  *	@param x x-coordinate of the worker
@@ -17,7 +18,9 @@ public class Worker extends Person{
  * */
   public Worker(double x, double y)
   {
-    super("WorkerSprites/Worker_1.png",x,y);
+    super("Dungeon Floor Updated/Wall_9.png",x,y);
+    patrolDir = 0;
+    patrolTimer = 0;
   }
   
   /**
@@ -26,13 +29,8 @@ public class Worker extends Person{
    * @pre w is damaged and not null
    */
   public void repair(WallPiece w){
-	  w.healWall(getLevel() * 10);
-	  addXP(10);
-  }
-    public Image getImage()
-  {
-	  return new ImageIcon("WorkerSprites/Worker_1.png").getImage();
-	  
+	  w.healWall(getLevel() * 50);
+	  addXP(50);
   }
   /**
    * Moves the worker towards the wall
@@ -43,10 +41,18 @@ public class Worker extends Person{
 	  Wall targetWall = p.getWall();
 	  WallPiece target = targetWall.getDamaged();
 	  if(target != null && target.getHP() < WallPiece.MAX_HP){
-		  if(distanceTo(new Person(null,target.getX(),target.getY())) <= 10){
+		  if(distanceTo(new Person(null,target.getX(),target.getY())) <= 60){
 			  repair(target);
-		  }else
-			  move((int)directionTo(new Person(null,target.getX(),target.getY())), 5);
+		  }else{
+			  if(!move((int)directionTo(new Person(null,target.getX(),target.getY())), 5,p)){
+				  move(patrolDir,5,p);
+				  patrolTimer++;
+				  if(patrolTimer >= 25){
+					  patrolDir += 90;
+					  patrolTimer = 0;
+				  }
+			  }
+		  }
 	  }
 	 
   }

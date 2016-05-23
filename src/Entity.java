@@ -28,9 +28,23 @@ public abstract class Entity extends MovingImage{
    * Person needs to move
    * @param dir angle that the person changes in angle 
    * @param distance length that the person moves 
+   * @return returns false if the unit is unable to move
    * */
-	public void move(int dir, int dist) {
-		moveByAmount(Math.cos(Math.toRadians(dir)) * dist ,Math.sin(Math.toRadians(dir)) * dist);
+	public boolean move(int dir, int dist, Player p) {
+		boolean moveable = true;
+		double yDist = Math.sin(Math.toRadians(dir)) * dist;
+		double xDist = Math.cos(Math.toRadians(dir)) * dist;
+		MovingImage test = new MovingImage("", (int)(x+xDist),(int)(y+yDist),(int)width,(int)height);
+		for(WallPiece wp: p.getWall().getWallParts()){
+			if(wp != null)
+				if(test.intersects(wp)){
+					moveable = false;
+				}
+		}
+		if(moveable)
+			moveByAmount(xDist,yDist);
+		
+		return moveable;
 	}
 	/**
 	 *  Returns the current HP of the person
@@ -83,7 +97,7 @@ public abstract class Entity extends MovingImage{
 	 * @return distance between the two
 	 */
 	public double distanceTo(Entity e){
-		return Math.sqrt(Math.pow(e.getX() - getX(), 2) + Math.pow(e.getY() - getY(), 2));
+		return Math.sqrt(Math.pow(e.getCenterX() - getCenterX(), 2) + Math.pow(e.getCenterY() - getCenterY(), 2));
 	}
 	/**
 	 * Gets the direction to the target
@@ -91,31 +105,8 @@ public abstract class Entity extends MovingImage{
 	 * @return direction in degrees
 	 */
 	public double directionTo(Entity e) {
-		double angle = Math.toDegrees(Math.atan2( e.getY() - getY(),e.getX() - getX()));
-//		  if(e.getX() > getX()){
-//			  if(e.getY() > getY()){
-//				  angle += 180;
-//			  }
-//			  angle *= -1;
-//			  angle += 180;
-//		  }
-//		  if(e.getY() == getY()){
-//			  if(getX() < e.getX()){
-//				  angle = 0;
-//			  }
-//			  else{
-//				  angle = 180;
-//			  }
-//		  }
-//		  if(e.getX() == getX()){
-//			  if(e.getY() > getY()){
-//				  angle = 270;
-//			  }
-//			  else{
-//				  angle = 90;
-//			  }
-//		  }
-		  return angle;
+		double angle = Math.toDegrees(Math.atan2( e.getCenterY() - getCenterY(),e.getCenterX() - getCenterX()));
+		return angle;
 	}
 	  
 }

@@ -7,7 +7,7 @@ public class WallMain extends JFrame{
 	JPanel cardPanel;
 	public WallMain(String title) {
 		super(title);
-		setBounds(100, 100, 800, 600);
+		setBounds(100, 100, 1000, 1000);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    cardPanel = new JPanel();
@@ -18,6 +18,7 @@ public class WallMain extends JFrame{
 	    WallGameScreen panel2 = new WallGameScreen(this);
 	    WallBuyScreen panel3 = new WallBuyScreen(this,panel2);
 	    addKeyListener(panel2.new KeyHandler());
+	    addMouseListener(panel2.new MouseHandler());
 	
 	    cardPanel.add(panel1,"1");
 	    cardPanel.add(panel2,"2");

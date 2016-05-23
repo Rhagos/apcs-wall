@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 import java.awt.image.ImageObserver;
 
 import javax.swing.ImageIcon;
@@ -12,7 +13,7 @@ import processing.core.PApplet;
  *   @author Daniel Wu and Anthony Ma
  *   @version 5/15/16
  * */
-public class WallPiece{
+public class WallPiece extends Building{
   public static final double MAX_HP = 10000;
   private double hp;
   private double x,y;
@@ -24,6 +25,7 @@ public class WallPiece{
    * */
   public WallPiece(double x, double y, int pieceNum, Wall w)
   {
+	super("Dungeon Floor Updated/Wall_1.png",(int)x,(int)y,50,50);
     hp = MAX_HP;
     this.x = x;
     this.y = y;
@@ -94,4 +96,5 @@ public class WallPiece{
 	  drawer.drawImage(getImage(), (int)getX(), (int)getY(), 50, 50, io);
     
   }
+
 }

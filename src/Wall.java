@@ -56,6 +56,18 @@ public class Wall{
   public ArrayList<WallPiece> getWallParts(){
 	  return wall;
   }
+  public int getUpperBound(){
+	  return (int) (wallY - 50);
+  }
+  public int getLowerBound(){
+	  return (int) (wallY + 50);
+  }
+  public int getLeftBound(){
+	  return (int) (wallX - 50);
+  }
+  public int getRightBount(){
+	  return (int) (wallX + 50*wall.size());
+  }
    /**	Draws a new instance of a Wall object with the position starting at Wallx and running till WallY
   *   	@param drawer the PApplet used to draw the Wall by running through al the Wallpieces and initializing them in a line
   *    @pre drawer must not be null and appropiate settings should already be initialized (color, fill,etc)

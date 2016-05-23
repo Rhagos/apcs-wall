@@ -14,7 +14,6 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
   
   private Rectangle screenRect;
   private Player player;
-  private ArrayList<Entity> entities;
   private boolean running;
   private WallMain w;
   
@@ -28,33 +27,22 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
 	  JButton button = new JButton("BUY AN ORPHAN");
 	  button.addActionListener(this);
 	  add(button);
-	  
-
-	  entities = new ArrayList<Entity>();
 	  player = new Player();
 	  for(int i = 0; i < 20; i++){
 		  player.getWall().buildWall();
 	  }
 	  running = true;
 	  
-	  
-	 addPerson(new Guard(100,100));
-	 addPerson(new Guard(150,100));
-	 addPerson(new Worker(125,100));
-	 addEnemy(new Alien(100,300));
-	 addEnemy(new Alien(125,300));
-	 addEnemy(new Alien(150,300));
-	 
+
+	 player.getEntities().add(new Spawner(200,600));
 	 new Thread(this).start();
   }
   
   public void addPerson(Person a){
 	  player.hire(a);
-	  entities.add(a);
   }
   public void addEnemy(Alien a){
-	  player.getEnemy().add(a);
-	  entities.add(a);
+	  player.addEnemy(a);
   }
   public void paintComponent(Graphics g)
   {
@@ -70,8 +58,9 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
     
     AffineTransform at = g2.getTransform();
   //  g2.scale(ratioX, ratioY); 
-
+    
     g.setColor(new Color(205,102,29));
+    
     for (WallPiece w: player.getWall().getWallParts()) {
     	if(w != null)
     		w.draw(g2,this);
@@ -82,9 +71,13 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
     for(Alien a:player.getEnemy()){
     	a.draw(g2, this);
     }
+    player.getSpawner().draw(g2, this);
+    
     g2.setTransform(at);
-
-	// TODO Add any custom drawings here
+  }
+  
+  public Player getPlayer(){
+	  return player;
   }
 
 
@@ -92,8 +85,9 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
 	while (running) { // Modify this to allow quitting
 		long startTime = System.currentTimeMillis();
 	
-		for(Entity e:entities){
-			e.act(player);
+		for(int i = 0; i < player.getEntities().size(); i++){
+			Entity a = player.getEntities().get(i);
+			a.act(player);
 		}
 	  	repaint();
 	  	
@@ -113,8 +107,7 @@ public class KeyHandler implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -128,13 +121,44 @@ public class KeyHandler implements KeyListener {
 	}
 }
 
-
-
 @Override
 public void actionPerformed(ActionEvent arg0) {
 	w.changeToBuy();
 	
 }
-
+public class MouseHandler implements MouseListener{
+	
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		player.place(e.getX(), e.getY());
+		System.out.println(player.getHired());
+		
+	}
+	
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}
 
 }

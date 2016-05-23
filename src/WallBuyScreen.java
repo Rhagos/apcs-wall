@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class WallBuyScreen extends JPanel implements ActionListener  {
 	JButton button1;
@@ -15,6 +16,9 @@ public class WallBuyScreen extends JPanel implements ActionListener  {
 	public WallBuyScreen(WallMain w, WallGameScreen g) {
 		this.w = w;
 		this.g = g;
+		JTextField text = new JTextField();
+		text.setText(g.getPlayer().getFunds() + "");
+		add(text);
 		button1 = new JButton("BUY A HARDWORKING CONSERVATIVE GUARD");
 		button1.addActionListener(this);
 		add(button1);
