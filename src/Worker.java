@@ -17,7 +17,7 @@ public class Worker extends Person{
  * */
   public Worker(double x, double y)
   {
-    super("Dungeon Floor Updated/Wall_9.png",x,y);
+    super("WorkerSprites/Worker_1.png",x,y);
   }
   
   /**
