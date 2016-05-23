@@ -5,7 +5,7 @@ public class DestroyerAlien extends Alien{
 	private int patrolDir;
 	private int patrolTimer;
 	public DestroyerAlien(double x, double y) {
-		super("AlienSprite/Alien_1.png", x, y);
+		super("AlienSprite/Alien_1.png", x, y, 30, 15);
 		patrolDir = 0;
 	    patrolTimer = 0;
 	}

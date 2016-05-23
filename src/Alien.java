@@ -21,8 +21,8 @@ public class Alien extends Entity{
 	 * 	@param x x-coordinate of the alien
 	 * 	@param y y-coordinate of the alien
 	 * */
-	  public Alien(String string, double x, double y) {
-		  super(string,(int)x,(int)y,30,20);
+	  public Alien(String string, double x, double y, double w, double l) {
+		  super(string,(int)x,(int)y,(int)w,(int)l);
 	  }
 
 	  public Image getImage()

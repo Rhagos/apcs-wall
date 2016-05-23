@@ -17,6 +17,11 @@ public class Spawner extends Building{
 		timer++;
 		if(timer >= spawnTime && spawn){
 			timer = 0;
+			if(Math.random()<1)
+			{
+				p.addEnemy((new BombAlien(getX(),getY())));
+				
+			}
 			
 			if(Math.random() > 0.5){
 				p.addEnemy((new DestroyerAlien(getX(),getY())));
@@ -25,7 +30,7 @@ public class Spawner extends Building{
 						p.addEnemy(new DestroyerAlien(getX()+i, getY()));
 					}
 				}
-			}else{
+			}else {
 				if(spawnTime <= 30){
 					for(int i = 1; i <= 2; i++){
 						p.addEnemy(new DestroyerAlien(getX()+i, getY()));

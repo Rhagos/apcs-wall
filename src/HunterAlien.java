@@ -11,7 +11,7 @@ public class HunterAlien extends Alien{
  * 	@param y y-coordinate of the guard
  * */
   public HunterAlien(double x, double y){
-    super("AlienSprite/Alien_3.png",x,y);
+    super("AlienSprite/Alien_3.png",x,y,30,15);
     patrolDir = 0;
     patrolTimer = 0;
   }

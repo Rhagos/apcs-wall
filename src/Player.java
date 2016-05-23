@@ -48,6 +48,7 @@ public class Player
 			  System.out.println("NEW" + p.getX() + " " + p.getY());
 			  
 			  for(WallPiece a: walls.getWallParts()){
+				  if(a != null)
 				  if(p.intersects(a)){
 					  p.moveToLocation(x,y-100);
 				  }
