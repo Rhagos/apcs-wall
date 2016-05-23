@@ -27,14 +27,16 @@ Multiple types of Aliens with different sprites and behaviors
 Different types of guards that have multiple behaviors for different defense setups  
 Map to show alien setup   
 Simplified resource gathering setup  
-Strech
+
+Stretch
 -----------------------------------------------------------------------------------
 Get networking to make it so that two people can play the game where one controlls the Ai and the other controlls the human defenses  
 Allow for terrain interactions where the player can alter the wall  
 Some sort of diversion from the game that allows the humans to go on the defensive against the aliens  
 Mod capabilities, allowing the player to change the source code directly  
 Random events within the game that can completely change the situation with different variables  
-Interaction with out of settlement variables   
+Interaction with out of settlement variables  
+
 Classes: 
 -----------------------------------------------------------------------------------
 DrawingSurface (PApplet drawings)   
@@ -56,3 +58,4 @@ Sprite Resources:
 http://millionthvector.blogspot.com/
 http://7soul1.deviantart.com/art/Spaceship-Game-Sprites-385923888
 http://unluckystudio.com/free-top-down-shooterplayer-sprites/
+https://docs.oracle.com/javase/tutorial/displayCode.html?code=https://docs.oracle.com/javase/tutorial/uiswing/examples/layout/BoxLayoutDemoProject/src/layout/BoxLayoutDemo.java
