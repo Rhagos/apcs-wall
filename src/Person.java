@@ -2,8 +2,6 @@ import java.awt.Image;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-
-import processing.core.PApplet;
 /**
  * This class represents a person which is the base for all people in the game 
  * 

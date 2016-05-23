@@ -33,8 +33,10 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
 	  }
 	  running = true;
 	  
-
-	 player.getEntities().add(new Spawner(200,600));
+	 Spawner spawn = new Spawner(200,600);
+	 player.getEntities().add(spawn);
+	 spawn.moveToLocation(200, 600);
+	 player.getEntities().add(new Base());
 	 new Thread(this).start();
   }
   

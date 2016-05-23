@@ -7,7 +7,6 @@ import java.awt.image.ImageObserver;
 
 import javax.swing.ImageIcon;
 
-import processing.core.PApplet;
 /** 
  *  This class represents a piece of the wall which forms an arraylist for the Wall class
  *   @author Daniel Wu and Anthony Ma

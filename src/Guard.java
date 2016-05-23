@@ -46,11 +46,8 @@ public class Guard extends Person{
 	  super.act(pl);
 	  Alien target = getClosest(pl);
 	  if(target!= null && distanceTo(target) < 700){
-		  if(distanceTo(target) < 100){
-			  target.setHP(target.getHP()-50);
-			  if(target.getHP() <= 0){
-				  target = getClosest(pl);
-			  }
+		  if(distanceTo(target) < 150){
+			  target.setHP(target.getHP()-2);
 		  }else{
 			  if(!move((int)(directionTo(target)),5,pl)){
 				  move(patrolDir,5,pl);

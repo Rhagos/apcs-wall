@@ -11,12 +11,13 @@ public class WallBuyScreen extends JPanel implements ActionListener  {
 	JButton button1;
 	JButton button2;
 	JButton returnButton;
+	JTextField text;
 	WallMain w;
 	WallGameScreen g;
 	public WallBuyScreen(WallMain w, WallGameScreen g) {
 		this.w = w;
 		this.g = g;
-		JTextField text = new JTextField();
+		text = new JTextField();
 		text.setText(g.getPlayer().getFunds() + "");
 		add(text);
 		button1 = new JButton("BUY A HARDWORKING CONSERVATIVE GUARD");
@@ -33,9 +34,11 @@ public class WallBuyScreen extends JPanel implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(button1)){
 			g.addPerson(new Guard(50,50));
+			text.setText(g.getPlayer().getFunds() + "");
 		}
 		if(e.getSource().equals(button2)){
 			g.addPerson(new Worker(100,100));
+			text.setText(g.getPlayer().getFunds() + "");
 		}
 		if(e.getSource().equals(returnButton)){
 			w.changePanel();

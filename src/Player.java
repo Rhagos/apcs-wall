@@ -31,6 +31,7 @@ public class Player
 		  if(funds >= p.getPrice()){
 			  buyList.add(p);
 			  funds -= p.getPrice();
+			  System.out.println(funds);
 		  }
 		  
 	  }
@@ -41,8 +42,17 @@ public class Player
 	  
 	  public void place(int x, int y){
 		  if(buyList.size() > 0){
-			  buyList.get(0).setX(x);
-			  buyList.get(0).setY(y);
+			  Person p = buyList.get(0);
+			  System.out.println(p);
+			  p.moveToLocation(x, y);
+			  System.out.println("NEW" + p.getX() + " " + p.getY());
+			  
+			  for(WallPiece a: walls.getWallParts()){
+				  if(p.intersects(a)){
+					  p.moveToLocation(x,y-100);
+				  }
+			  }
+			  
 			  hired.add(buyList.get(0));
 			  entities.add(buyList.get(0));
 			  buyList.remove(0);

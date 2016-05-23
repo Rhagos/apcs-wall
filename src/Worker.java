@@ -2,7 +2,6 @@ import java.awt.Color;
 
 import javax.swing.ImageIcon;
 
-import processing.core.PApplet;
 /** 
  *  This class represents a worker who is a typer Person and thus has all of Person qualities
  *   @author Daniel Wu and Anthony Ma
@@ -29,7 +28,7 @@ public class Worker extends Person{
    * @pre w is damaged and not null
    */
   public void repair(WallPiece w){
-	  w.healWall(getLevel() * 50);
+	  w.healWall(getLevel() * 10);
 	  addXP(50);
   }
   /**

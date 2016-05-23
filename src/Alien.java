@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-import processing.core.PApplet;
 /**
  * This class represents an alien which is the base for all enemies in the game 
  * 

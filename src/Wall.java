@@ -2,7 +2,6 @@ import java.awt.Graphics2D;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
-import processing.core.PApplet;
 /** 
  *  This class represents a Wall which is made up of Wallpieces 
  *   @author Daniel Wu and Anthony Ma
