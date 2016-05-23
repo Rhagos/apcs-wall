@@ -28,7 +28,7 @@ public class HunterAlien extends Alien{
    */
   public void act(Player pl){
 	  super.act(pl);
-	  Alien target = getClosest(pl);
+	  Person target = getClosest(pl);
 	  if(target!= null && distanceTo(target) < 100){
 		  if(distanceTo(target) < 65){
 			  target.setHP(target.getHP()-50);
@@ -49,13 +49,13 @@ public class HunterAlien extends Alien{
 	  
 	  
   }
-  public Alien getClosest(Player pl){
+  public Person getClosest(Player pl){
 	  
 	  double minDist = Integer.MAX_VALUE;
-	  ArrayList<Alien> ays = pl.getEnemy();
-	  Alien target = null;
+	  ArrayList<Person> ays = pl.getHired();
+	  Person target = null;
 	  for(int i = 0; i < ays.size(); i++){
-		  Alien ay = ays.get(i);
+		  Person ay = ays.get(i);
 		  if(distanceTo(ay) < minDist){
 			  target = ay;
 		  }
