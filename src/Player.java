@@ -24,7 +24,7 @@ public class Player
 	   */
 	  public void hire(Person p){
 		  if(funds >= p.getPrice()){
-			  addToFriendly(p);
+			  hired.add(p);
 			  funds -= p.getPrice();
 		  }
 		  
@@ -42,48 +42,19 @@ public class Player
 		  }
 	  }
 	  
-	  
-	  
-	  public void addToEnemies(Alien a){
-		  if(!(a.getX() >= 0 && a.getX() < 500) && !(a.getY() >= 0 && a.getY() < 500)){
-			  return;
-		  }
-		  if(enemies[(int) a.getX()][(int) a.getY()] == null){
-			  enemy.add(a);
-			  enemies[(int) a.getX()][(int) a.getY()] = a;
-			  return;
-		  }
-		  a.setX(a.getX()+1);
-		  a.setY(a.getY()+1);
-		  addToEnemies(a);
-	  }
-	  
-	  public void addToFriendly(Person a){
-		  if(!(a.getX() >= 0 && a.getX() < 500) && !(a.getY() >= 0 && a.getY() < 500)){
-			  return;
-		  }
-		  if(friendly[(int) a.getX()][(int) a.getY()] == null){
-			  hired.add(a);
-			  friendly[(int) a.getX()][(int) a.getY()] = a;
-			  return;
-		  
-		  }
-		  a.setX(a.getX()+1);
-		  a.setY(a.getY()+1);
-		  addToFriendly(a);
-		  
-	  }
-	  
 	  public void removeFriendly(Person a){
 		  if(!(a.getX() >= 0 && a.getX() < 500) && !(a.getY() >= 0 && a.getY() < 500)){
 			  return;
 		  }
 		  if(friendly[(int) a.getX()][(int) a.getY()].equals(a)){
-			  hired.add(a);
-			  friendly[(int) a.getX()][(int) a.getY()] = a;
+			  hired.remove(a);
+			  friendly[(int) a.getX()][(int) a.getY()] = null;
 			  return;
 		  
 		  }
+	  }
+	  public void removeEnemy(Alien a){
+		  enemy.remove(a);
 	  }
 	  
 	  public void updatePosition(Entity e){

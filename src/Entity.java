@@ -8,14 +8,20 @@ public abstract class Entity extends MovingImage{
 	private int level;
 	private int xp;
 	private int threshold;
+	private boolean dead;
 	public Entity(String image, int x, int y, int w, int h) {
 		super(image, x, y, w, h);
 		HP = 200;
-		level = 0;
+		level = 1;
 		xp = 0;
 		threshold = 1000;
+		dead = false;
 	}
 
+	
+	public boolean getLifeStatus(){
+		return dead;
+	}
  
   /**
    * Moves the entity to a new location by changing the x and y coordinate given an angle and distance 
@@ -53,10 +59,13 @@ public abstract class Entity extends MovingImage{
 	 */
 	public void act(Player p){
 		if(HP <= 0){
-			if(this instanceof Alien)
-				p.getEnemy().remove(this);
-			if(this instanceof Person)
-				p.getHired().remove(this);
+			if(this instanceof Alien){
+				p.removeEnemy((Alien)this);
+			}
+			if(this instanceof Person){
+				p.removeFriendly((Person)this);
+			}
+			dead = true;
 		}
 	}
 	/**
@@ -82,22 +91,30 @@ public abstract class Entity extends MovingImage{
 	 * @return direction in degrees
 	 */
 	public double directionTo(Entity e) {
-		double angle = Math.toDegrees(Math.atan2(e.getX() - getX(), e.getY() - getY()));
-		  if(e.getX() > getX()){
-			  if(e.getY() > getY()){
-				  angle += 180;
-			  }
-			  angle *= -1;
-			  angle += 180;
-		  }
-		  if(e.getY() == getY()){
-			  if(getX() < e.getX()){
-				  angle = 0;
-			  }
-			  else{
-				  angle = 180;
-			  }
-		  }
+		double angle = Math.toDegrees(Math.atan2( e.getY() - getY(),e.getX() - getX()));
+//		  if(e.getX() > getX()){
+//			  if(e.getY() > getY()){
+//				  angle += 180;
+//			  }
+//			  angle *= -1;
+//			  angle += 180;
+//		  }
+//		  if(e.getY() == getY()){
+//			  if(getX() < e.getX()){
+//				  angle = 0;
+//			  }
+//			  else{
+//				  angle = 180;
+//			  }
+//		  }
+//		  if(e.getX() == getX()){
+//			  if(e.getY() > getY()){
+//				  angle = 270;
+//			  }
+//			  else{
+//				  angle = 90;
+//			  }
+//		  }
 		  return angle;
 	}
 	  

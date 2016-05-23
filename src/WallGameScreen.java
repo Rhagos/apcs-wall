@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.util.*;
 
 
-public class WallGameScreen extends JPanel implements Runnable
+public class WallGameScreen extends JPanel implements Runnable, ActionListener
 {
   public static final int DRAWING_WIDTH = 800;
   public static final int DRAWING_HEIGHT = 600;
@@ -15,20 +15,27 @@ public class WallGameScreen extends JPanel implements Runnable
   private Rectangle screenRect;
   private Player player;
   private ArrayList<Entity> entities;
+  private boolean running;
+  private WallMain w;
   
 
 
-  public WallGameScreen () {
+  public WallGameScreen (WallMain w) {
 	  super();
 	  setBackground(Color.GRAY);
 	  screenRect = new Rectangle(0,0,DRAWING_WIDTH,DRAWING_HEIGHT);
+	  this.w = w;
+	  JButton button = new JButton("BUY AN ORPHAN");
+	  button.addActionListener(this);
+	  add(button);
+	  
 
 	  entities = new ArrayList<Entity>();
 	  player = new Player();
 	  for(int i = 0; i < 20; i++){
 		  player.getWall().buildWall();
 	  }
-	  
+	  running = true;
 	  
 	  
 	 addPerson(new Guard(100,100));
@@ -46,7 +53,7 @@ public class WallGameScreen extends JPanel implements Runnable
 	  entities.add(a);
   }
   public void addEnemy(Alien a){
-	  player.addToEnemies(a);
+	  player.getEnemy().add(a);
 	  entities.add(a);
   }
   public void paintComponent(Graphics g)
@@ -82,8 +89,9 @@ public class WallGameScreen extends JPanel implements Runnable
 
 
   public void run() {
-	while (true) { // Modify this to allow quitting
+	while (running) { // Modify this to allow quitting
 		long startTime = System.currentTimeMillis();
+	
 		for(Entity e:entities){
 			e.act(player);
 		}
@@ -118,6 +126,14 @@ public class KeyHandler implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 	
 	}
+}
+
+
+
+@Override
+public void actionPerformed(ActionEvent arg0) {
+	w.changeToBuy();
+	
 }
 
 

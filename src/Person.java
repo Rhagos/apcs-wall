@@ -45,6 +45,7 @@ public class Person extends Entity
    * Performs the action that the person is designed to do
    */
   public void act(Player p){
+	  super.act(p);
 	  if(xp > threshold){
 		  level += 1;
 		  xp = 0;
