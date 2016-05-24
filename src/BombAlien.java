@@ -53,7 +53,7 @@ public class BombAlien extends Alien{
 	  /**
 	   *  Detects the closet non destroyed wall and moves toward it 
 	   *  
-	   *   @returns the x,y coord of a target if found, null otherwise
+	   *   @return w the closet building found 
 	   * */
 	  public WallPiece getClosest(Wall w){
 		  double maxDist = Integer.MAX_VALUE;
