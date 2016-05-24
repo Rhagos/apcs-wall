@@ -10,7 +10,7 @@ Open the jar file after extracting. Go to the main game by pressing start and th
 
 Must Have
 -----------------------------------------------------------------------------------
-Menu with buttons and options that include instructions and settings    
+(Completed) Menu with buttons and options that include instructions and settings    
 (Completed) One type of worker to maintain the wall    
 (Completed) One type of defense to bolster wall defenses    
 (Completed) One type of guard to defend the wall 
