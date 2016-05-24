@@ -1,7 +1,11 @@
+
 /**
- *  Creates a Base object of type Building which spawns Person related objects 
- *  
- * */
+ * This class represents an base of type building which aims to spawn person related objects 
+ * 
+ * @author Daniel Wu and Anthony Ma
+ * @version 5/15/16
+ * 
+ **/
 public class Base extends Building{
 	
 	private int timer;
