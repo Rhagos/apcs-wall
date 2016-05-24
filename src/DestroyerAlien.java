@@ -10,6 +10,12 @@ public class DestroyerAlien extends Alien{
 	public static final int PATROL_TIME = 100;
 	private int patrolDir;
 	private int patrolTimer;
+	/**
+	 *   Constructs a destroyeralien with an inherited image, xCoord, yCoord, height, and width\
+	 *   width and heigh preset 
+	 *   @param x is the XCoord
+	 *   @param y is the YCoord 
+	 * */
 	public DestroyerAlien(double x, double y) {
 		super("AlienSprite/Alien_1.png", x, y, 30, 15);
 		patrolDir = 0;
