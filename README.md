@@ -10,7 +10,7 @@ Open the jar file after extracting. Go to the main game by pressing start and th
 
 Must Have
 -----------------------------------------------------------------------------------
-(Completed) Menu with buttons and options that include instructions and settings    
+(Completed) Menu with buttons and options that include instructions 
 (Completed) One type of worker to maintain the wall    
 (Completed) One type of defense to bolster wall defenses    
 (Completed) One type of guard to defend the wall 
@@ -19,8 +19,8 @@ Must Have
 
 Want to Have
 -----------------------------------------------------------------------------------
-Interactive settings that can change difficulty of the game 
-Individual worker classes that have different sprites and functions  
+(Incomplete) Interactive settings that can change difficulty of the game 
+(Completed) Individual worker classes that have different sprites and functions  
 (Completed) Multiple types of Aliens with different sprites and behaviors  
 (Completed) Different types of guards that have multiple behaviors for different defense setups  
 (Incomplete) Map to show alien setup   
