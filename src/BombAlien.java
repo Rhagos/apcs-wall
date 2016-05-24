@@ -12,6 +12,12 @@ public class BombAlien extends Alien{
 	public static final int PATROL_TIME = 100;
 	private int patrolDir;
 	private int patrolTimer;
+	/**
+	 *   Constructs a bombalien with an inherited image, xCoord, yCoord, height, and width\
+	 *  width and heigh preset 
+	 *   @param x is the XCoord
+	 *   @param y is the YCoord 
+	 * */
 	public BombAlien(double x, double y) {
 		super("AlienSpawnSprite/Mothership_3.png", x, y, 60,60);
 		patrolDir = 0;
