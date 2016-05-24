@@ -1,5 +1,13 @@
 
 
+/**
+ * This class represents an bombalien of type alien which aims to deal a one time attack to the wallpiece and then remove itself from the grid 
+ * 
+ * @author Daniel Wu and Anthony Ma
+ * @version 5/15/16
+ * 
+ **/
+ 
 public class BombAlien extends Alien{
 	public static final int PATROL_TIME = 100;
 	private int patrolDir;
@@ -12,7 +20,7 @@ public class BombAlien extends Alien{
 
 	/**
 	   * Moves the alien towards the wall
-	   * @param p Player object containing the other objects
+	   * @param p Player object containing the other object 
 	   */
 	  public void act(Player p){
 		  super.act(p);
@@ -42,7 +50,11 @@ public class BombAlien extends Alien{
 			  }
 		  }
 	  }
-	  
+	  /**
+	   *  Detects the closet non destroyed wall and moves toward it 
+	   *  
+	   *   @returns the x,y coord of a target if found, null otherwise
+	   * */
 	  public WallPiece getClosest(Wall w){
 		  double maxDist = Integer.MAX_VALUE;
 		  WallPiece target = new WallPiece(999,999,999,w);
