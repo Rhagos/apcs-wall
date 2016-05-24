@@ -39,6 +39,11 @@ public class Person extends Entity
   public double getPrice(){
 	  return hiringPrice;
   }
+  
+  public String getType(){
+	  return "Person";
+  }
+  
   /**
    * Performs the action that the person is designed to do
    */

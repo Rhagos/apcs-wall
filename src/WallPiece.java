@@ -48,8 +48,6 @@ public class WallPiece extends Building{
    */
   public void healWall(double h){
 	  hp += h;
-	  if(hp > MAX_HP)
-		  hp = MAX_HP;
   }
   
   public void damageWall(double d){
@@ -71,6 +69,9 @@ public class WallPiece extends Building{
   }
   public double getY(){
 	  return y;
+  }
+  public int getIndex(){
+	  return num;
   }
   
   public Image getImage(){

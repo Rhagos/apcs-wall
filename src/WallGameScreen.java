@@ -30,13 +30,15 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
 	  player = new Player();
 	  for(int i = 0; i < 20; i++){
 		  player.getWall().buildWall();
+		  player.getEntities().add(player.getWall().getWallParts().get(i));
 	  }
 	  running = true;
 	  
-	 Spawner spawn = new Spawner(200,600);
+	 Spawner spawn = new Spawner(500,800);
+	 Base base = new Base();
+	 player.getEntities().add(base);
 	 player.getEntities().add(spawn);
-	 spawn.moveToLocation(200, 600);
-	 player.getEntities().add(new Base());
+	 spawn.moveToLocation(500, 800);
 	 new Thread(this).start();
   }
   
@@ -49,9 +51,10 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
   public void paintComponent(Graphics g)
   {
     super.paintComponent(g);  // Call JPanel's paintComponent method to paint the background
+   
 
 	Graphics2D g2 = (Graphics2D)g;
-
+	player.setGfx(g2);
     int width = getWidth();
     int height = getHeight(); 
     
@@ -74,6 +77,7 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
     	a.draw(g2, this);
     }
     player.getSpawner().draw(g2, this);
+    player.getHQ().draw(g2, this);
     
     g2.setTransform(at);
   }

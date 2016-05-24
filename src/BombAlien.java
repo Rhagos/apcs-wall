@@ -25,7 +25,10 @@ public class BombAlien extends Alien{
 			  if(target != null){
 				  if(distanceTo(new Person(null,target.getCenterX(),target.getCenterY())) < 60){
 					  if(target instanceof WallPiece)
-						  target.damageWall(2500);
+						  target.damageWall(5000);
+					  else
+						  target.takeDamage(5000);
+					  this.setHP(-999);
 				  }else{
 					  if(!move((int)(directionTo(new Person(null,target.getCenterX(),target.getCenterY()))), 5,p)){
 						  move(patrolDir,5,p);

@@ -1,6 +1,10 @@
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
+
+import javax.swing.ImageIcon;
 
 public abstract class Entity extends MovingImage{
 	
@@ -9,8 +13,10 @@ public abstract class Entity extends MovingImage{
 	private int xp;
 	private int threshold;
 	private boolean dead;
+	private String imageLink;
 	public Entity(String image, int x, int y, int w, int h) {
 		super(image, x, y, w, h);
+		imageLink = image;
 		HP = 200;
 		level = 1;
 		xp = 0;
@@ -23,6 +29,9 @@ public abstract class Entity extends MovingImage{
 		return dead;
 	}
  
+	public void takeDamage(double damage){
+		HP -= damage;
+	}
   /**
    * Moves the entity to a new location by changing the x and y coordinate given an angle and distance 
    * Person needs to move
@@ -75,6 +84,7 @@ public abstract class Entity extends MovingImage{
 		if(HP <= 0){
 			if(this instanceof Alien){
 				p.removeEnemy((Alien)this);
+				p.changeFunds(25);
 			}
 			if(this instanceof Person){
 				p.removeFriendly((Person)this);
@@ -107,6 +117,14 @@ public abstract class Entity extends MovingImage{
 	public double directionTo(Entity e) {
 		double angle = Math.toDegrees(Math.atan2( e.getCenterY() - getCenterY(),e.getCenterX() - getCenterX()));
 		return angle;
+	}
+	
+	public ImageIcon getIcon(){
+		Image img = new ImageIcon(imageLink).getImage();
+		BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+		Graphics g = bi.createGraphics();
+		g.drawImage(img, 140, 199, 20, 20, null, null);
+		return new ImageIcon(bi);
 	}
 	  
 }

@@ -26,6 +26,9 @@ public class DestroyerAlien extends Alien{
 				  if(distanceTo(new Person(null,target.getCenterX(),target.getCenterY())) < 30){
 					  if(target instanceof WallPiece)
 						  target.damageWall(10);
+					  else{
+						  target.takeDamage(10);
+					  }
 				  }else{
 					  if(!move((int)(directionTo(new Person(null,target.getCenterX(),target.getCenterY()))), 5,p)){
 						  move(patrolDir,5,p);

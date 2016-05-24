@@ -17,7 +17,7 @@ public class Spawner extends Building{
 		timer++;
 		if(timer >= spawnTime && spawn){
 			timer = 0;
-			if(Math.random()<1)
+			if(Math.random() < 0.1)
 			{
 				p.addEnemy((new BombAlien(getX(),getY())));
 				

@@ -38,6 +38,10 @@ public class Guard extends Person{
 	  return new ImageIcon("GuardSprite/Guard_1.png").getImage();
 	  
   }
+  
+  public String getType(){
+	  return "Guard";
+  }
   /**
    * Moves the guard towards the aliens
    * @param pl Player object containing the other objects
@@ -47,7 +51,7 @@ public class Guard extends Person{
 	  Alien target = getClosest(pl);
 	  if(target!= null && distanceTo(target) < 700){
 		  if(distanceTo(target) < 150){
-			  target.setHP(target.getHP()-2);
+			  target.setHP(target.getHP()-5);
 		  }else{
 			  if(!move((int)(directionTo(target)),5,pl)){
 				  move(patrolDir,5,pl);

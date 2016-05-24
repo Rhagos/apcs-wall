@@ -32,6 +32,16 @@ public class Wall{
 	numbers++;
 	wall.add(tenfeethigher);
   }
+  
+  public void buildWall(int i)
+  {
+	WallPiece tenfeethigher = new WallPiece(i * 50 + wallX, wallY, numbers,this);
+	numbers++;
+	if(wall.get(i) == null){
+		wall.remove(i);
+		wall.add(i, tenfeethigher);
+	}
+  }
   /** 
    *  Returns the most damaged wallpiece by comparing from the start of the Wallpiece Array the damaged parts of each individual 
    * wallpiece until the end of the program 

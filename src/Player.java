@@ -1,3 +1,5 @@
+import java.awt.Graphics2D;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 
 public class Player
@@ -10,6 +12,7 @@ public class Player
 	  private Spawner spawn;
 	  private double funds;
 	  private Base HQ;
+	  private Graphics2D draw;
 	  /**
 	   * Represents the player and the funds and People that he or she has
 	   */
@@ -20,6 +23,10 @@ public class Player
 		  spawn = new Spawner(200,350);
 		  entities = new ArrayList<Entity>();
 		  buyList = new ArrayList<Person>();
+	  }
+	  
+	  public void setGfx(Graphics2D g){
+		  draw = g;
 	  }
 	  /**
 	   * Hires a person for their cost
@@ -40,6 +47,10 @@ public class Player
 		  return funds;
 	  }
 	  
+	  public void changeFunds(double a){
+		  funds += a;
+	  }
+	  
 	  public void place(int x, int y){
 		  if(buyList.size() > 0){
 			  Person p = buyList.get(0);
@@ -58,6 +69,27 @@ public class Player
 			  entities.add(buyList.get(0));
 			  buyList.remove(0);
 		  }
+	  }
+	  
+	  public void upgradeWall(){
+		  for(int i = 0; i < walls.getWallParts().size(); i++){
+			  WallPiece p = walls.getWallParts().get(i);
+			  try{
+			  if(!(p instanceof Turret)){
+				  entities.add(entities.indexOf(p), new Turret(p.getX(),p.getY(),p.getIndex(),walls));
+				  entities.remove(entities.indexOf(p)+1);
+				  walls.getWallParts().add(p.getIndex(),new Turret(p.getX(),p.getY(),p.getIndex(),walls));
+				  if(p.getIndex()+1 <= walls.getWallParts().size())
+					  walls.getWallParts().remove(p.getIndex()+1);
+				  
+			  }else{
+				  p.setHP(WallPiece.MAX_HP + 5000);
+			  }
+			  }catch(NullPointerException e){
+				  
+			  }
+		  }
+		  
 	  }
 	  
 	  public void addEnemy(Alien p){
@@ -103,6 +135,9 @@ public class Player
 	  }
 	  public Base getHQ(){
 		  return HQ;
+	  }
+	  public Graphics2D getGFX(){
+		  return draw;
 	  }
 
 }
