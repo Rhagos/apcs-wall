@@ -18,7 +18,8 @@ public class Base extends Building{
 		setHP(100000);
 	}
 	/**
-	 *  Base shoots nearby enemies if they get too close 
+	 *  Base shoots nearby enemies if they get too close \
+	 *  @param p Player type objects 
 	 * */
 	public void act(Player p){
 		super.act(p);
