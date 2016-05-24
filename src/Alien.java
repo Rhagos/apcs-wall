@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * This class represents an alien which is the base for all enemies in the game 
+ * This class represents an alien of type entity which is the base for all enemies in the game 
  * 
  * @author Daniel Wu and Anthony Ma
  * @version 5/15/16
