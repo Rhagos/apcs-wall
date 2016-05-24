@@ -1,4 +1,10 @@
-
+/**
+ * This class represents a DestroyerAlien of type alien which aims to deal continuos attacks to the wallpiece and ignore person entirely
+ * 
+ * @author Daniel Wu and Anthony Ma
+ * @version 5/15/16
+ * 
+ **/
 
 public class DestroyerAlien extends Alien{
 	public static final int PATROL_TIME = 100;
@@ -42,7 +48,11 @@ public class DestroyerAlien extends Alien{
 			  }
 		  }
 	  }
-	  
+	   /**
+	   *  Detects the closet non destroyed wall and moves toward it 
+	   *  
+	   *   @return w the closet wallpiece found 
+	   * */
 	  public WallPiece getClosest(Wall w){
 		  double maxDist = Integer.MAX_VALUE;
 		  WallPiece target = new WallPiece(999,999,999,w);
