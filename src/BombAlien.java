@@ -57,24 +57,23 @@ public class BombAlien extends Alien{
 		  }
 	  }
 	  /**
-	   *  Detects the closet non destroyed wall and moves toward it 
+	   *  Detects the closet non destroyed building and moves toward it 
 	   *  
 	   *   @return w the closet building found 
 	   * */
-	  public WallPiece getClosest(Wall w){
+	  public Building getClosest(Player p){
 		  double maxDist = Integer.MAX_VALUE;
-		  WallPiece target = new WallPiece(999,999,999,w);
-		  for(int i = 0; i < w.getWallParts().size(); i++){
-			  WallPiece temp = w.getWallParts().get(i);
+		  Building target = new WallPiece(9999,9999,9999,null);
+		  for(int i = 0; i < p.getWall().getWallParts().size(); i++){
+			  WallPiece temp = p.getWall().getWallParts().get(i);
 			  if(temp != null)
-			  if(distanceTo(new Person(null,temp.getCenterX(),temp.getCenterY())) < maxDist){
-				  maxDist = distanceTo(new Person(null,target.getCenterX(),target.getCenterY()));
-				  target = w.getWallParts().get(i);
-			  }
+				  if(distanceTo(target) < maxDist){
+					  maxDist = distanceTo(target);
+					  target = p.getWall().getWallParts().get(i);
+				  }
 		  }
-//		  if(target.equals(new WallPiece(999,999,999,w))){
-//			  return null;
-//		  }
+		  if(distanceTo(p.getHQ()) < maxDist)
+			  target = p.getHQ();
 		  return target;
 	  }
 }
