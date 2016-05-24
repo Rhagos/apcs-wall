@@ -14,15 +14,19 @@ public class WallMain extends JFrame{
 	    CardLayout cl = new CardLayout();
 	    cardPanel.setLayout(cl);
 	    
-		WallOptionScreen panel1 = new WallOptionScreen(this);    
+		WallRunnerScreen panel1 = new WallRunnerScreen(this);    
 	    WallGameScreen panel2 = new WallGameScreen(this);
 	    WallBuyScreen panel3 = new WallBuyScreen(this,panel2);
+	    WallInstructionsScreen panel4 = new WallInstructionsScreen(this);
+	    WallGameOverScreen panel5 = new WallGameOverScreen(this);
 	    addKeyListener(panel2.new KeyHandler());
 	    addMouseListener(panel2.new MouseHandler());
 	
 	    cardPanel.add(panel1,"1");
 	    cardPanel.add(panel2,"2");
 	    cardPanel.add(panel3,"3");
+	    cardPanel.add(panel4,"4");
+	    cardPanel.add(panel5,"5");
 	    
 	    add(cardPanel);
 	
@@ -41,6 +45,14 @@ public class WallMain extends JFrame{
 	}
 	public void changeToBuy()	{
 		((CardLayout)cardPanel.getLayout()).show(cardPanel, "3");
+		requestFocus();
+	}
+	public void changeToHelp(){
+		((CardLayout)cardPanel.getLayout()).show(cardPanel, "4");
+		requestFocus();
+	}
+	public void changeToDead(){
+		((CardLayout)cardPanel.getLayout()).show(cardPanel, "5");
 		requestFocus();
 	}
 }
