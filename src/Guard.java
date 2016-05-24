@@ -25,20 +25,24 @@ public class Guard extends Person{
     patrolTimer = 0;
     setHP(500);
   }
-	/**
-	 *  Checks to see if an alien is within a set range of the Guard object 
-	 * */
+/**
+*  Checks to see if an alien is within a set range of the Guard object 
+* */
   public boolean inRange()
   {
     return false;
   }
-  
+  /**
+   *  Sets the image that a default guard looks like
+   * */
   public Image getImage()
   {
 	  return new ImageIcon("GuardSprite/Guard_1.png").getImage();
 	  
   }
-  
+  /**
+   *  Returns the type of person the guard is 
+   * */
   public String getType(){
 	  return "Guard";
   }
@@ -73,6 +77,10 @@ public class Guard extends Person{
 	  
 	  
   }
+  /**
+   *   Returns the closest Alien location to the person 
+   *   @param pl Player object containing the other objects
+   * */
   public Alien getClosest(Player pl){
 	  
 	  double minDist = Integer.MAX_VALUE;
