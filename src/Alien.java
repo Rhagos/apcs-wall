@@ -25,6 +25,9 @@ public class Alien extends Entity{
 		  super(string,(int)x,(int)y,(int)w,(int)l);
 	  }
 
+	/**
+	 *  Sets the default image for Alien type objects
+	 * */
 	  public Image getImage()
 	  {
 		  return new ImageIcon("AlienSprite/Alien_1.png").getImage();
