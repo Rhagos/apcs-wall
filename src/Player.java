@@ -1,7 +1,13 @@
 import java.awt.Graphics2D;
 import java.awt.image.ImageObserver;
 import java.util.ArrayList;
-
+/**
+ * This class represents a Plater which encompasses all objects on the WallGamePanel 
+ * 
+ * @author Daniel Wu and Anthony Ma
+ * @version 5/15/16
+ * 
+ **/
 public class Player
 {
 	  private ArrayList<Person> hired;
@@ -42,15 +48,23 @@ public class Player
 		  }
 		  
 	  }
-	  
+	  /**
+	   *  Returns the funds currently usable 
+	   * */
 	  public double getFunds(){
 		  return funds;
 	  }
-	  
+	  /**
+	   *  Adds onto the current fund by a amount
+	   *  @param a set amount added on 
+	   * */
 	  public void changeFunds(double a){
 		  funds += a;
 	  }
-	  
+	  /**  Puts new person objects purchased onto the map onto the Game Panel 
+	   * 	@param x xCoord placed 
+	   *    @param y yCoord placed 
+	   * */
 	  public void place(int x, int y){
 		  if(buyList.size() > 0){
 			  Person p = buyList.get(0);
@@ -70,7 +84,9 @@ public class Player
 			  buyList.remove(0);
 		  }
 	  }
-	  
+	  /**
+	   * 	Upgrades wall by placing a turret or if there is already a turret then add on additional health 
+	   * */
 	  public void upgradeWall(){
 		  for(int i = 0; i < walls.getWallParts().size(); i++){
 			  WallPiece p = walls.getWallParts().get(i);
@@ -108,36 +124,57 @@ public class Player
 			  funds += p.getPrice()/2;
 		  }
 	  }
-	  
+	  /**
+	   *  Removes either already spawned or bought person objects off the game board    
+	   * 
+	   * */
 	  public void removeFriendly(Person a){
 		  hired.remove(a);
 		  entities.remove(a);
 	  }
+	  /**
+	   *  Removes either already spawned or bought alien objects off the game board 
+	   * */
 	  public void removeEnemy(Alien a){
 		  funds += 100;
 		  enemy.remove(a);
 		  entities.remove(a);
 	  }
+	  /**
+	   *  Returns all hired person within the array 
+	   * */
 	  public ArrayList<Person> getHired(){
 		  return hired;
 	  }
+	  /**
+	   *  Returns all enemy within the array 
+	   * */ 
 	  public ArrayList<Alien> getEnemy(){
 		  return enemy;
 	  }
+	  /**
+	   * 	Returns the whole array of walls 
+	   * */
 	  public Wall getWall(){
 		  return walls;
 	  }
+	  /**
+	   *  Returns the spawner 
+	   * */
 	  public Spawner getSpawner(){
 		  return spawn;
 	  }
+	  /**
+	   * 	Returns the whole array of entities 
+	   * */
 	  public ArrayList<Entity> getEntities(){
 		  return entities;
 	  }
+	  /**
+	   *  Returns the base HQ
+	   * */
 	  public Base getHQ(){
 		  return HQ;
-	  }
-	  public Graphics2D getGFX(){
-		  return draw;
 	  }
 
 }
