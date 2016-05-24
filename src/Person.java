@@ -39,7 +39,9 @@ public class Person extends Entity
   public double getPrice(){
 	  return hiringPrice;
   }
-  
+  /**
+   * Returns the type of Person called 
+   * */
   public String getType(){
 	  return "Person";
   }
