@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 
 public class WallRunnerScreen extends JPanel implements ActionListener {
+	
 	WallMain w;
 	JButton button1;
 	JButton button3;

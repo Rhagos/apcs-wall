@@ -36,6 +36,8 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
 	  
 	 Spawner spawn = new Spawner(500,800);
 	 Base base = new Base();
+	 player.setBase(base);
+	 player.setSpawner(spawn);
 	 player.getEntities().add(base);
 	 player.getEntities().add(spawn);
 	 spawn.moveToLocation(500, 800);
@@ -71,6 +73,10 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
     		w.draw(g2,this);
     }
     for(Person p:player.getHired()){
+    	if(p instanceof Guard){
+    		if(((Guard) p).getClosest(player) != null)
+    			g2.drawLine((int)p.getCenterX(), (int)p.getCenterY(), (int)((Guard) p).getClosest(player).getCenterX(), (int)((Guard) p).getClosest(player).getCenterY());
+    	}
     	p.draw(g2, this);
     }
     for(Alien a:player.getEnemy()){
@@ -90,7 +96,9 @@ public class WallGameScreen extends JPanel implements Runnable, ActionListener
   public void run() {
 	while (running) { // Modify this to allow quitting
 		long startTime = System.currentTimeMillis();
-	
+		if(player.getHQ().getLifeStatus()){
+			w.changeToDead();
+		}
 		for(int i = 0; i < player.getEntities().size(); i++){
 			Entity a = player.getEntities().get(i);
 			a.act(player);
@@ -155,8 +163,6 @@ public class MouseHandler implements MouseListener{
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		player.place(e.getX(), e.getY());
-		System.out.println(player.getHired());
 		
 	}
 	
