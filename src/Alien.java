@@ -20,6 +20,8 @@ public class Alien extends Entity{
 	 * 	@param string filename of the image
 	 * 	@param x x-coordinate of the alien
 	 * 	@param y y-coordinate of the alien
+	 *      @param w sets the width
+	 *      @param l sets the length 
 	 * */
 	  public Alien(String string, double x, double y, double w, double l) {
 		  super(string,(int)x,(int)y,(int)w,(int)l);
