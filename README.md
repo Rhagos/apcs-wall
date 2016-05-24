@@ -60,7 +60,7 @@ Worker (Represents an type Person object that can fix the walls that are damaged
 
 Responsibility List: 
 -----------------------------------------------------------------------------------
-Anthony will do Menu classes, Alien classes, Music, Sprites, Powerpoint, and Readme 
+Anthony will do Menu classes, Alien classes, Music, Sprites, Powerpoint, and Readme  
 Daniel will do Person classes, Menu classes, URl, Wall/Building Clases 
 
 Sprite/Outside Library Resources:
