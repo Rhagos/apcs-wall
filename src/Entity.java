@@ -5,7 +5,13 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 
 import javax.swing.ImageIcon;
-
+/**
+ * This class represents a Entity of type MovingImage serves as the base for all buildings, person, and alien objects
+ * 
+ * @author Daniel Wu and Anthony Ma
+ * @version 5/15/16
+ * 
+ **/
 public abstract class Entity extends MovingImage{
 	
 	private double HP;
@@ -14,6 +20,14 @@ public abstract class Entity extends MovingImage{
 	private int threshold;
 	private boolean dead;
 	private String imageLink;
+	/**
+	 *   Constructs a entity with a default image, xCoord, yCoord, width, and height 
+	 *  @param image sets the image 
+	 *  @param x sets the XCoord
+	 *  @param y sets the YCoord
+	 *  @param w sets the width
+	 *  @param h sets the height
+	 * */
 	public Entity(String image, int x, int y, int w, int h) {
 		super(image, x, y, w, h);
 		imageLink = image;
@@ -24,11 +38,16 @@ public abstract class Entity extends MovingImage{
 		dead = false;
 	}
 
-	
+	/**
+	 *  Returns the current life status of the entity
+	 * */
 	public boolean getLifeStatus(){
 		return dead;
 	}
- 
+ 	/**
+ 	 *   Sets the entity to decrease house based on damage inputed
+ 	 *  @param damage sets the amount of damage taken 
+ 	 * */
 	public void takeDamage(double damage){
 		HP -= damage;
 	}
@@ -118,13 +137,6 @@ public abstract class Entity extends MovingImage{
 		double angle = Math.toDegrees(Math.atan2( e.getCenterY() - getCenterY(),e.getCenterX() - getCenterX()));
 		return angle;
 	}
-	
-	public ImageIcon getIcon(){
-		Image img = new ImageIcon(imageLink).getImage();
-		BufferedImage bi = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-		Graphics g = bi.createGraphics();
-		g.drawImage(img, 140, 199, 20, 20, null, null);
-		return new ImageIcon(bi);
-	}
+
 	  
 }
