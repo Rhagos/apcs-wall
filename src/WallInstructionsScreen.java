@@ -7,11 +7,11 @@ import javax.swing.JTextArea;
 
 public class WallInstructionsScreen  extends JPanel implements ActionListener 
 {
-
 	WallMain w;
+	JButton back;
 	public WallInstructionsScreen(WallMain w) {
 		this.w = w;
-		JTextArea text1 = new JTextArea("This program is a game where the player "
+		JLabel text1 = new JLabel("This program is a game where the player "
 				+ "\ncharacter builds and manages the building of a wall to keep"
 				+ "\nan evil alien species from eating the village. The overall "
 				+ "\nrules are that the player cannot directly build the wall or"
@@ -23,11 +23,16 @@ public class WallInstructionsScreen  extends JPanel implements ActionListener
 				+ "\npopulation that performs the construction, defense, "
 				+ "maintainence, and assault of the wall");
 		add(text1);
+		text1.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+		back = new JButton("Back");
+		back.addActionListener(this);
+		add(back);
 		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
-		
+		w.changePanel();
 		
 	}
 }
