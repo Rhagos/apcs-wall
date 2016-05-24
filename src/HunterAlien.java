@@ -1,12 +1,20 @@
 import java.util.ArrayList;
 
+/**
+ * This class represents a HunterAlien of type alien which aims to deal continuos attacks to the person object and ignore wall entirely
+ * 
+ * @author Daniel Wu and Anthony Ma
+ * @version 5/15/16
+ * 
+ **/
+
 public class HunterAlien extends Alien{
 	public static final int PATROL_TIME = 100;
 	private int patrolDir;
 	private int patrolTimer;
 
 /**
- *  Createss a Guard with default parameters at x and y 
+ *  Createss a HunterAlien with default parameters at x and y 
  *	@param x x-coordinate of the guard
  * 	@param y y-coordinate of the guard
  * */
@@ -52,6 +60,10 @@ public class HunterAlien extends Alien{
 	  
 	  
   }
+    /**
+   *   Returns the closest Person location to the hunteralien
+   *   @param pl Player object containing the other objects
+   * */
   public Person getClosest(Player pl){
 	  
 	  double minDist = Integer.MAX_VALUE;
